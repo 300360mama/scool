@@ -13,19 +13,20 @@
        <header>
 
        <form  class="search-form" action="" method="post">
-       <input type="text" class="search">
-       <input type="text" class="submit-search">
+       <input type="text" class="search" placeholder="Search">
        </form>
        <nav class="nav-menu">
-       <ul class="list-menu">
-           <li>Головна</li>
-           <li>Предмети</li>
-           <li>Цікавинки</li>
-           <li>Дошкільнята</li>
-           <li>Розвиваючі ігри</li>
-       </ul>
+        <ul class="list-menu">
+            <li> <a href="">Головна</a></li>                                </li>
+            <li> <a href="">Предмети</li>
+            <li> <a href="">Цікавинки</a></li>
+            <li> <a href="">Дошкільнятам</a></li>
+            <li> <a href="">Розвиваючі ігри</a></li>
+        </ul>
        </nav>
        </header>
+
+
 
     </body>
 </html>
