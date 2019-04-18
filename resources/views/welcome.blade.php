@@ -20,25 +20,17 @@
             <a href="#">Дошкільнятам</a>
             <a href="#">Розвиваючі ігри</a>
         </nav>
-        <form class="search-form" action="" method="post">
-            <input type="text" class="search" placeholder="Search">
-        </form>
-    </header>
+        . v
+        </himeader>
 
-    <div class="wrapper">
-        <main id="main"></main>
-        <aside id="aside">
-            <h3 class="category-title">Категорії</h3>
-            <ul class="category-container">
-                <li><a href="" class="category-name">Travel</a></li>
-                <li><a href="" class="category-name">Musik</a></li>
-                <li><a href="" class="category-name">Game</a></li>
-                <li><a href="" class="category-name">Language</a></li>
-            </ul>
-        </aside>
-    </div>
-    <footer>
-        <span class="copyright">Copyright 2019 </span> </footer>
+        <div class=" wrapper">
+            <main id="main"></main>
+            <aside id="aside">
+
+            </aside>
+        </div>
+        <footer>
+            </ooter>
 </body>
 
 </html>

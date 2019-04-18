@@ -1,33 +1,16 @@
 @font-face {
-    font-family: 'RobotoReg';
-    src: url('./fonts/Roboto/Roboto-Regular.ttf') format('ttf');
+    font-family: 'Lato';
+    src: url('./fonts/lato/Lato-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
 }
 
+
 @font-face {
-    font-family: 'RobotoBlack';
-    src: url('./fonts/Roboto/Roboto-Black.ttf') format('ttf');
-    font-weight: 600;
+    font-family: 'RobotoMono';
+    src: url('./fonts/Roboto_Mono/RobotoMono-Medium.ttf') format('ttf');
+    font-weight: 500;
     font-style: normal;
 }
 
-@font-face{
-    font-family: 'RobotoCdReg';
-    src: url('./fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf') format('ttf');
-    font-weight:  400;
-    font-style:  normal;
-}
-@font-face{
-    font-family: 'RobotoCdBold';
-    src: url('./fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf') format('ttf');
-    font-weight:  700;
-    font-style:  normal;
-}
 
-@font-face{
-    font-family: 'RobotoCdLight';
-    src: url('./fonts/Roboto_Condensed/RobotoCondensed-Light.ttf') format('ttf');
-    font-weight:  300;
-    font-style:  normal;
-}
