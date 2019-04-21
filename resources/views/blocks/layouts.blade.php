@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/fontawesome/all.css">
 </head>
 <body>
 <header>
@@ -20,9 +21,12 @@
     </nav>
     <h1 class="logo-text">SCHOOL</h1>
 </header>
-<div class="wrapper">
-    @yield('content')
+<div class="wrapper"> 
+@yield('content')  
     @yield('sidebar')
+ 
+   
+   
 </div>
 <footer>
     <div class="footer-image">

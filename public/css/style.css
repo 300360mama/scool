@@ -57,6 +57,38 @@ header {
     border: 2px dashed #000000;
 }
 
+/* Wrapper */
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1160px;
+
+}
+/* Content */
+
+main {
+   width: 768px; 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+/* Sidebar */
+
+aside {
+    width: 280px;
+    
+}
+
+aside .aside-title {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 400 
+}
 
 
 /*Footer*/

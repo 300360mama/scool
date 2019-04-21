@@ -10,11 +10,11 @@
         <section class="follow-us">
             <span class="aside-title">Subscribe & Follow</span>
             <div class="social-block">
-                <a href="" class="aside-social"></a>
-                <a href="" class="aside-social"></a>
-                <a href="" class="aside-social"></a>
-                <a href="" class="aside-social"></a> `
-                <a href="" class="aside-social"></a>
+                <a href="#" class="aside-social fa-twitter"></a>
+                <a href="#" class="aside-social fa-facebook "></a>
+                <a href="#" class="aside-social fa-instagram"></a>
+                <a href="#" class="aside-social fa-telegram"></a>
+        
             </div>
         </section>
         <section class="pinterest">
