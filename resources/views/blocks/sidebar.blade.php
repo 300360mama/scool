@@ -14,7 +14,6 @@
                 <a href="#" class="aside-social fa-facebook "></a>
                 <a href="#" class="aside-social fa-instagram"></a>
                 <a href="#" class="aside-social fa-telegram"></a>
-        
             </div>
         </section>
         <section class="pinterest">
