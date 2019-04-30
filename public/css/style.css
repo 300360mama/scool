@@ -14,7 +14,7 @@ ul li {
 header,
 .wrapper,
 footer {
-    width: 1920px;
+    min-width: 1160px;
     margin: 0 auto;
     font-size: 16px;
 
@@ -40,18 +40,18 @@ header {
     justify-content: center;
 }
 
-.navigation .menu a{
-   font-size: 1em;
+.navigation .menu a {
+    font-size: 1em;
     color: #000000;
 
 }
 
-.navigation  .menu {
+.navigation .menu {
     padding: 25px 10px;
 }
 
 .logo-text {
-    font: normal 4.5em  RobotoMono;
+    font: normal 4.5em RobotoMono;
     color: #000000;
     padding: 25px 45px;
     border: 2px dashed #000000;
@@ -63,21 +63,28 @@ header {
     display: flex;
     justify-content: space-between;
     width: 1160px;
-
 }
+
 /* Content */
 
 main {
-   width: 768px; 
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+    width: 768px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Sidebar */
 
 aside {
-    width: 280px;    
+    width: 280px;
+}
+
+aside .aside-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 aside .aside-title {
@@ -89,7 +96,89 @@ aside .aside-title {
     font: 400 12px Lato;
     color: #ffffff;
     background-color: #2d2d2d;
+    margin: 0 0 10px 0;
 }
+
+aside .about-logo {
+    margin: 0 0 10px 0;
+}
+
+aside .about-txt {
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+aside .follow-us .social-block {
+    padding: 15px 0;
+
+}
+
+aside .pinterest {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 0 20px 0;
+}
+
+aside .pinterest img {
+    width: 90px;
+    height: 90px;
+}
+
+aside .follow-us .aside-social {
+    font-size: 20px;
+    margin: 0 5px;
+}
+
+aside .latest-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0;
+}
+
+.latest-post .latest-post-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+   
+}
+
+.latest-post-list .latest-post-block {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 10px 0;
+}
+
+.latest-post .latest-post-block:last-of-type {
+    border: none;
+}
+
+.latest-post-list .latest-post-block img {
+    width: 90px;
+    height: 70px;
+}
+
+.latest-post-block .post-id {
+    padding: 0 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.latest-post-block .post-id .post-id-text {
+    font: 400 13px Lato;
+    color: #282828;
+}
+
+.latest-post-block .post-id .post-id-date {
+    font: normal 11px 'OpenSans';
+    color: #646464;
+}
+
 
 
 /*Footer*/
@@ -98,7 +187,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 footer .footer-image {
