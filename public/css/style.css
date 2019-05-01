@@ -179,8 +179,31 @@ aside .latest-post {
     color: #646464;
 }
 
+/* Article main */
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main article {
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    flex-direction: column;
+    text-align: center;
+}
 
 
+article .article-category {
+    font: normal 14px 'OpenSans';
+    color: #060606;
+}
+
+article .title {
+    font: 500 32px 'LatoMedium';
+    color: #282828;
+}
 /*Footer*/
 
 footer {

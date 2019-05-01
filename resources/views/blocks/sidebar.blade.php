@@ -67,8 +67,6 @@
 
         </div>
     </section>
-    <section class="tags aside-section ">
-        <span class="aside-title">Tags</span>
-    </section>
+   
 </aside>
 @endsection

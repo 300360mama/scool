@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'LatoMedium';
+    src: url('./fonts/lato/Lato-Medium.ttf') format('ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'RobotoMono';
