@@ -72,12 +72,16 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Lato;
+    font-weight: 400;
 }
 
 /* Sidebar */
 
 aside {
     width: 280px;
+    font-family: Lato;
+    font-weight: 400;
 }
 
 aside .aside-section {
@@ -93,7 +97,8 @@ aside .aside-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    font: 400 12px Lato;
+    font-size: 12px;
+    font-weight: 400;
     color: #ffffff;
     background-color: #2d2d2d;
     margin: 0 0 10px 0;
@@ -170,7 +175,7 @@ aside .latest-post {
 }
 
 .latest-post-block .post-id .post-id-text {
-    font: 400 13px Lato;
+    font-size: 13px;
     color: #282828;
 }
 
@@ -192,18 +197,54 @@ main article {
     justify-content:  center;
     flex-direction: column;
     text-align: center;
+    padding: 15px 0;
 }
-
 
 article .article-category {
     font: normal 14px 'OpenSans';
     color: #060606;
+    padding: 10px 0;
 }
 
 article .title {
-    font: 500 32px 'LatoMedium';
+    font-size: 32px;
+    font-weight: 500;
     color: #282828;
+    padding: 10px 0;
 }
+
+article .article-date {
+    font: 400 12px 'OpenSans';
+    color: #8d8d8c;
+    padding: 10px 0;
+}
+
+article .article-logo {
+    width: 100%;
+    height: auto;
+}
+
+article .article-text {
+    text-align: justify;
+    font-size: 14px;
+    color: #5c5c5b;
+    padding: 10px 10px;
+}
+
+article .continue-read {
+    width: 236px;
+    height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #8c3434;
+    align-self: flex-start;
+    margin: 0 0 0 10px;
+    color: #000000;
+    font-wei
+}
+
 /*Footer*/
 
 footer {

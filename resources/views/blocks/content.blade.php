@@ -4,7 +4,7 @@
         <span class="article-category">Lifestyle</span>
         <h3 class="title">How to build a garden in your apartment</h3>
         <span class="article-date">November 16, 2015</span>
-        <img src="./image/content/article-img.jpg" alt="" class="article-logo">
+        <img src="./image/content/article-img.jpg" alt="logo-article" class="article-logo">
         <span class="article-text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
             sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
@@ -41,6 +41,8 @@
             Eodem modo typi, qui nunc nobis videntur parum clari, 
             fiant sollemnes in futurum.
         </span>
+
+        <a href="#" class="continue-read">Продовжити читання</a>
     </article>
 
     @yield('comments')
