@@ -45,6 +45,34 @@
         <a href="#" class="continue-read">Продовжити читання</a>
     </article>
 
+    <section class="like-article">
+    <h6 class="like-title"></h6>
+    <section class="like-article-list">
+        <figure>
+            <img class="like-article-icon" src="" alt="Icon image">
+            <figcaption>
+            <span class="like-article-categogy">
+            </span>
+            <span class="like-article-name"></span>
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="like`a-article-icon" src="" alt="Icon image">
+            <figcaption>
+            <span class="like-article-categogy">
+            </span>
+            <span class="like-article-name"></span></figcaption>
+        </figure>
+        <figure>
+            <img class="like-article-icon" src="" alt="Icon image">
+            <figcaption>
+            <span class="like-article-categogy">
+            </span>
+            <span class="like-article-name"></span></figcaption>
+        </figure>
+    </section>
+    </section>
+
     @yield('comments')
 </main>
 

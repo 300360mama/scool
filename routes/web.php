@@ -10,5 +10,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get("/", 'PostController@index');
+Route::get("/404", 'NotfoundController@notFound');
+Route::get("/", 'HomeController@index');

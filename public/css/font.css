@@ -7,11 +7,17 @@
 
 @font-face {
     font-family: 'Lato';
+    src: url('./fonts/lato/Lato-Light.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
     src: url('./fonts/lato/Lato-Medium.ttf') format('ttf');
     font-weight: 500;
     font-style: normal;
 }
-
 
 @font-face {
     font-family: 'Lato';
@@ -34,3 +40,9 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'OpenSansSmBd';
+    src: url('./fonts/opensans/OpenSans-Semibold.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
