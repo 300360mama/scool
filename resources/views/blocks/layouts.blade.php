@@ -11,34 +11,15 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navigation">
-            <ul>
-                <li class="menu"><a href="#">Головна</a></li>
-                <li class="menu"><a href="#">Предмети</a></li>
-                <li class="menu"><a href="#">Цікавинки</a></li>
-                <li class="menu"><a href="#">Дошкільнятам</a></li>
-                <li class="menu"><a href="#">Розвиваючі ігри</a></li>
-            </ul>
-        </nav>
-        <h1 class="logo_text">SCHOOL</h1>
-    </header>
+
+    @yield('header')
     <div class="wrapper">
         @yield('content')
         @yield('sidebar')
     </div>
-    <footer>
-        <div class="footer_image">
-            <img src="./image/footer/image1.png" alt="">
-            <img src="./image/footer/image2.png" alt="">
-            <img src="./image/footer/image3.png" alt="">
-            <img src="./image/footer/image4.png" alt="">
-            <img src="./image/footer/image5.png" alt="">
-            <img src="./image/footer/image6.png" alt="">
-        </div>
-        <div class="opacity_wrapper"></div>
-        <span class="footer_copyright">&copy; Copyright <span class="date">2019</span></span>
-    </footer>
+
+
+    @yield('footer')
 </body>
 
 </html>

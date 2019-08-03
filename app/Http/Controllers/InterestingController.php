@@ -11,4 +11,5 @@ class InterestingController extends Controller
     {
         return view('post');
     }
+
 }

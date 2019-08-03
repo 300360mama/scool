@@ -17,8 +17,8 @@ footer {
     min-width: 1160px;
     margin: 0 auto;
     font-size: 16px;
-
 }
+
 
 /*Header */
 
@@ -41,7 +41,6 @@ header {
 .navigation .menu a {
     font-size: 1em;
     color: #000000;
-
 }
 
 .navigation .menu {
@@ -55,6 +54,7 @@ header {
     border: 2px dashed #000000;
 }
 
+
 /* Wrapper */
 
 .wrapper {
@@ -62,6 +62,7 @@ header {
     justify-content: space-between;
     width: 1360px;
 }
+
 
 /* Content */
 
@@ -118,7 +119,6 @@ aside .about_txt {
 
 aside .follow_us .social_block {
     padding: 15px 0;
-
 }
 
 aside .pinterest {
@@ -158,8 +158,6 @@ aside .latest_post {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-   
-   
 }
 
 .latest_post_list .latest_post_block {
@@ -195,6 +193,7 @@ aside .latest_post {
     color: #646464;
 }
 
+
 /* Article main */
 
 main {
@@ -206,7 +205,7 @@ main article {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:  center;
+    justify-content: center;
     flex-direction: column;
     text-align: center;
     padding: 15px 0;
@@ -345,6 +344,109 @@ article .continue_read .fa-arrow-right {
     color: #282828;
     padding: 5px;
 }
+
+
+
+/* Comments */
+
+.comments {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.comment {
+    width: 100%;
+    display: flex;
+    color: #282828;
+    margin: 20px 0;
+}
+
+.comment .comment_section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.comment .author_icon {
+    width: 87px;
+    height: 87px;
+    margin: 0 30px 0 0;
+}
+
+.comment .author_name {
+    font: 600 18px OpenSansSmBd;
+    padding: 3px 0;
+}
+
+.comment .date_publication {
+    font: normal 12px OpenSans;
+    padding: 3px 0;
+}
+
+.comment .comment_text {
+    font: normal 14px Lato;
+    color: #7f7f7f;
+    padding: 3px 0;
+}
+
+.subcomment {
+    width: 85%;
+    align-self: flex-end;
+}
+
+.comment .reply {
+    align-self: center;
+    font: 600 12px OpenSansSmBd;
+    color: #7f7f7f;
+    background: #d7d7d7;
+    padding: 6px 20px;
+    border-radius: 13px;
+}
+
+
+/* Not Found */
+
+.not_found {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.not_found_img {
+    width: 1164px;
+    height: 598px;
+}
+
+.not_found_title {
+    font: 300 64px 'Lato';
+    color: #000000;
+    padding: 30px 0;
+}
+
+.not_found_text {
+    font: 500 18px 'Lato';
+    color: #767676;
+    padding: 30px 0;
+}
+
+.goto_homepage {
+    margin: 40px 0px;
+    padding: 5px 10px;
+    background: #000000;
+    color: #ffffff;
+    font: 500 15px 'Lato';
+}
+
+.goto_homepage:hover {
+    background: rgba(0, 0, 0, .7);
+    transition: all 0.5s;
+}
+
+
 /*Footer*/
 
 footer {

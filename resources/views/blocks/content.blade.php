@@ -50,6 +50,7 @@
 
     @yield('about_author')
     @yield('like_article')
+
     @yield('comments')
 </main>
 

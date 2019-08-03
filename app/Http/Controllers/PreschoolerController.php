@@ -10,4 +10,5 @@ class PreschoolerController extends Controller
     {
         return view('post');
     }
+
 }
