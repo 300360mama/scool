@@ -1,11 +1,12 @@
 @section('content')
 <main>
     <article>
-        <span class="article-category">Lifestyle</span>
+    
         <h3 class="title">How to build a garden in your apartment</h3>
-        <span class="article-date">November 16, 2015</span>
+        <span class="article_category">Lifestyle</span>
+        <span class="article_date">November 16, 2015</span>
         <img src="./image/content/article-img.jpg" alt="logo-article" class="article-logo">
-        <span class="article-text">
+        <span class="article_text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
             sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
             magna aliquam erat volutpat. Ut wisi enim ad minim veniam, 
@@ -42,9 +43,13 @@
             fiant sollemnes in futurum.
         </span>
 
-        <a href="#" class="continue-read">Продовжити читання</a>
+        <a href="#" class="continue_read">Продовжити читання 
+            <span class="fa fa-arrow-right"></span>
+        </a>
     </article>
 
+    @yield('about_author')
+    @yield('like_article')
     @yield('comments')
 </main>
 

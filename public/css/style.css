@@ -25,13 +25,11 @@ footer {
 header {
     color: #000000;
     font: normal 0.875em Lato;
-    background: #3d6983;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     padding: 0 0 40px 0;
-
 }
 
 .navigation ul {
@@ -50,7 +48,7 @@ header {
     padding: 25px 10px;
 }
 
-.logo-text {
+.logo_text {
     font: normal 4.5em RobotoMono;
     color: #000000;
     padding: 25px 45px;
@@ -62,18 +60,23 @@ header {
 .wrapper {
     display: flex;
     justify-content: space-between;
-    width: 1160px;
+    width: 1360px;
 }
 
 /* Content */
 
 main {
-    width: 768px;
+    width: 960px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: Lato;
     font-weight: 400;
+}
+
+.article_category {
+    font: normal 14px OpenSans;
+    color: #060606;
 }
 
 /* Sidebar */
@@ -84,14 +87,14 @@ aside {
     font-weight: 400;
 }
 
-aside .aside-section {
+aside .aside_section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
 
-aside .aside-title {
+aside .aside_title {
     width: 100%;
     height: 50px;
     display: flex;
@@ -104,16 +107,16 @@ aside .aside-title {
     margin: 0 0 10px 0;
 }
 
-aside .about-logo {
+aside .about_logo {
     margin: 0 0 10px 0;
 }
 
-aside .about-txt {
+aside .about_txt {
     margin: 0 0 20px 0;
     text-align: center;
 }
 
-aside .follow-us .social-block {
+aside .follow_us .social_block {
     padding: 15px 0;
 
 }
@@ -125,17 +128,25 @@ aside .pinterest {
     padding: 0 0 20px 0;
 }
 
-aside .pinterest img {
-    width: 90px;
-    height: 90px;
+aside .pinterest_imgs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
 }
 
-aside .follow-us .aside-social {
+aside .pinterest_imgs img {
+    width: 90px;
+    height: 90px;
+    padding: 3px 0;
+}
+
+aside .follow_us .aside_social {
     font-size: 20px;
     margin: 0 5px;
 }
 
-aside .latest-post {
+aside .latest_post {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,7 +154,7 @@ aside .latest-post {
     padding: 15px 0;
 }
 
-.latest-post .latest-post-list {
+.latest_post .latest_post_list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -151,35 +162,35 @@ aside .latest-post {
    
 }
 
-.latest-post-list .latest-post-block {
+.latest_post_list .latest_post_block {
     display: flex;
     width: 100%;
     border-bottom: 1px solid #e3e3e3;
     padding: 10px 0;
 }
 
-.latest-post .latest-post-block:last-of-type {
+.latest_post .latest_post_block:last-of-type {
     border: none;
 }
 
-.latest-post-list .latest-post-block img {
+.latest_post_list .latest_post_block img {
     width: 90px;
     height: 70px;
 }
 
-.latest-post-block .post-id {
+.latest_post_block .post_id {
     padding: 0 0 0 15px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.latest-post-block .post-id .post-id-text {
+.latest_post_block .post_id .post_id_text {
     font-size: 13px;
     color: #282828;
 }
 
-.latest-post-block .post-id .post-id-date {
+.latest_post_block .post_id .post_id_date {
     font: normal 11px 'OpenSans';
     color: #646464;
 }
@@ -192,6 +203,7 @@ main {
 }
 
 main article {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content:  center;
@@ -200,9 +212,7 @@ main article {
     padding: 15px 0;
 }
 
-article .article-category {
-    font: normal 14px 'OpenSans';
-    color: #060606;
+article .article_category {
     padding: 10px 0;
 }
 
@@ -213,25 +223,25 @@ article .title {
     padding: 10px 0;
 }
 
-article .article-date {
+article .article_date {
     font: 400 12px 'OpenSans';
     color: #8d8d8c;
     padding: 10px 0;
 }
 
-article .article-logo {
+article .article_logo {
     width: 100%;
     height: auto;
 }
 
-article .article-text {
+article .article_text {
     text-align: justify;
     font-size: 14px;
     color: #5c5c5b;
     padding: 10px 10px;
 }
 
-article .continue-read {
+article .continue_read {
     width: 236px;
     height: 40px;
     box-sizing: border-box;
@@ -242,9 +252,99 @@ article .continue-read {
     align-self: flex-start;
     margin: 0 0 0 10px;
     color: #000000;
-    font-wei
+    font-weight: 600;
 }
 
+article .continue_read .fa-arrow-right {
+    margin:  0 0 0 10px;
+}
+
+/* About author*/
+
+.author_block {
+    width: 100;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 15px 0;
+
+}
+
+
+
+.author_block .author_icon {
+    width: 122px;
+    height: 122px;
+    margin: 0 20px 0 0;
+}
+
+.author_block .author_info_block {
+    display: flex;
+    flex-direction: column;
+    font: normal 14px OpenSans;
+    justify-content: center;
+}
+
+
+.author_block .author_info_block .author_name {
+    font: normal 21px OpenSans;
+    color: #282828;
+}
+
+.author_block .author_about {
+    font: normal 14px OpenSans;
+    color: #282828;
+    margin: 10px 0;
+}
+
+/* Like article block */
+
+.like_article_block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+
+}
+
+.like_article_block .like_article_info {
+    font: normal 15px OpenSans;
+    color: #5c5c5c;
+    padding: 10px 0;
+}
+
+
+.like_article_block .like_article_list {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.like_article_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 32%;
+    width: 242px;
+}
+
+.like_article_section:hover img {
+    opacity: 0.5;
+    transition: 0.4s ease;
+    width: 100%;
+    height: 187px;
+}
+
+.like_article_section .article_category {
+    font-size: 10px;
+    padding: 5px 0;
+}
+
+.like_article_section .like_article_title {
+    font: normal 14px OpenSans;
+    color: #282828;
+    padding: 5px;
+}
 /*Footer*/
 
 footer {
@@ -256,16 +356,16 @@ footer {
     overflow: hidden;
 }
 
-footer .footer-image {
+footer .footer_image {
     display: flex;
 }
 
-.footer-image img {
+.footer_image img {
     width: 320px;
     height: 320px;
 }
 
-footer .opacity-wrapper {
+footer .opacity_wrapper {
     background-color: rgba(255, 255, 255, .5);
     position: absolute;
     top: 0;

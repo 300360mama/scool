@@ -12,6 +12,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Lato';
+    src: url('./fonts/lato/Lato-Semibold.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'Lato';

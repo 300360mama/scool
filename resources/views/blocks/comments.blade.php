@@ -1,4 +1,7 @@
-@section('comments')
+@section("comments")
+<div class="comments">
 
-comments
+
+</div>
+
 @endsection
