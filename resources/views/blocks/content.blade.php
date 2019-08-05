@@ -5,7 +5,7 @@
         <h3 class="title">How to build a garden in your apartment</h3>
         <span class="article_category">Lifestyle</span>
         <span class="article_date">November 16, 2015</span>
-        <img src="./image/content/article-img.jpg" alt="logo-article" class="article-logo">
+        <img src="./image/content/article-img.jpg" alt="logo-article" class="article_logo">
         <span class="article_text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
             sed diam nonummy nibh euismod tincidunt ut laoreet dolore 

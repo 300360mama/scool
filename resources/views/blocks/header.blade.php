@@ -9,6 +9,6 @@
                 <li class="menu"><a href="#">Розвиваючі ігри</a></li>
             </ul>
         </nav>
-        <h1 class="logo-text">SCHOOL</h1>
+        <h1 class="logo_text">SCHOOL</h1>
     </header>
 @endsection

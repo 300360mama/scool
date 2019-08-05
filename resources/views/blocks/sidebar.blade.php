@@ -34,34 +34,34 @@
         </div>
     </section>
     <section class="latest_post aside_section">
-        <span class="aside-title">Latest Post</span>
-        <div class="latest-post-list">
-            <div class="latest-post-block">
-                <img src="./image/sidebar/image1.png" alt="" class="post-id-logo">
-                <div class="post-id">
-                    <span class="post-id-text">Moxine Headphone by Andy Meerow</span>
-                    <span class="post-id-date">November 16, 2015 </span>
+        <span class="aside_title">Latest Post</span>
+        <div class="latest_post_list">
+            <div class="latest_post_block">
+                <img src="./image/sidebar/image1.png" alt="" class="post_id_logo">
+                <div class="post_id">
+                    <span class="post_id_text">Moxine Headphone by Andy Meerow</span>
+                    <span class="post_id_date">November 16, 2015 </span>
                 </div>
             </div>
-            <div class="latest-post-block">
-                <img src="./image/sidebar/image1.png" alt="" class="post-id-logo">
-                <div class="post-id">
-                    <span class="post-id-text">Moxine Headphone by Andy Meerow</span>
-                    <span class="post-id-date">November 16, 2015 </span>
+            <div class="latest_post_block">
+                <img src="./image/sidebar/image1.png" alt="" class="post_id_logo">
+                <div class="post_id">
+                    <span class="post_id_text">Moxine Headphone by Andy Meerow</span>
+                    <span class="post_id_date">November 16, 2015 </span>
                 </div>
             </div>
-            <div class=latest-post-block>
-                <img src="./image/sidebar/image1.png" alt="" class="post-id-logo">
-                <div class="post-id">
-                    <span class="post-id-text">Moxine Headphone by Andy Meerow</span>
-                    <span class="post-id-date">November 16, 2015 </span>
+            <div class=latest_post_block>
+                <img src="./image/sidebar/image1.png" alt="" class="post_id_logo">
+                <div class="post_id">
+                    <span class="post_id_text">Moxine Headphone by Andy Meerow</span>
+                    <span class="post_id_date">November 16, 2015 </span>
                 </div>
             </div>
-            <div class="latest-post-block">
-                <img src="./image/sidebar/image1.png" alt="" class="post-id-logo">
-                <div class="post-id">
-                    <span class="post-id-text">Moxine Headphone by Andy Meerow</span>
-                    <span class="post-id-date">November 16, 2015 </span>
+            <div class="latest_post_block">
+                <img src="./image/sidebar/image1.png" alt="" class="post_id_logo">
+                <div class="post_id">
+                    <span class="post_id_text">Moxine Headphone by Andy Meerow</span>
+                    <span class="post_id_date">November 16, 2015 </span>
                 </div>
             </div>
 

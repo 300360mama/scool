@@ -9,7 +9,7 @@
             <img src="./image/footer/image6.png" alt="">
         </div>
         <div class="opacity_wrapper"></div>
-        <span class="footer-copyright">&copy; Copyright <span class="date">2019</span></span>
+        <span class="footer_copyright">&copy; Copyright <span class="date">2019</span></span>
 </footer>
 
 @endsection
