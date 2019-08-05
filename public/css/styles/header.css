@@ -1,0 +1,42 @@
+header,
+.wrapper,
+footer {
+    min-width: 1160px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+
+/*Header */
+
+header {
+    color: #000000;
+    font: normal 0.875em Lato;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0 0 40px 0;
+}
+
+.navigation ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation .menu a {
+    font-size: 1em;
+    color: #000000;
+}
+
+.navigation .menu {
+    padding: 25px 10px;
+}
+
+.logo_text {
+    font: normal 4.5em RobotoMono;
+    color: #000000;
+    padding: 25px 45px;
+    border: 2px dashed #000000;
+}

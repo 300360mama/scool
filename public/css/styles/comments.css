@@ -1,0 +1,57 @@
+/* Comments */
+
+.comments {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.comment {
+    width: 100%;
+    display: flex;
+    color: #282828;
+    margin: 20px 0;
+}
+
+.comment .comment_section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.comment .author_icon {
+    width: 87px;
+    height: 87px;
+    margin: 0 30px 0 0;
+}
+
+.comment .author_name {
+    font: 600 18px OpenSansSmBd;
+    padding: 3px 0;
+}
+
+.comment .date_publication {
+    font: normal 12px OpenSans;
+    padding: 3px 0;
+}
+
+.comment .comment_text {
+    font: normal 14px Lato;
+    color: #7f7f7f;
+    padding: 3px 0;
+}
+
+.subcomment {
+    width: 85%;
+    align-self: flex-end;
+}
+
+.comment .reply {
+    align-self: center;
+    font: 600 12px OpenSansSmBd;
+    color: #7f7f7f;
+    background: #d7d7d7;
+    padding: 6px 20px;
+    border-radius: 13px;
+}

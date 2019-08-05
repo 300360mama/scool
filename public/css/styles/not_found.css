@@ -1,0 +1,39 @@
+/* Not Found */
+
+.not_found {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.not_found_img {
+    width: 1164px;
+    height: 598px;
+}
+
+.not_found_title {
+    font: 300 64px 'Lato';
+    color: #000000;
+    padding: 30px 0;
+}
+
+.not_found_text {
+    font: 500 18px 'Lato';
+    color: #767676;
+    padding: 30px 0;
+}
+
+.goto_homepage {
+    margin: 40px 0px;
+    padding: 5px 10px;
+    background: #000000;
+    color: #ffffff;
+    font: 500 15px 'Lato';
+}
+
+.goto_homepage:hover {
+    background: rgba(0, 0, 0, .7);
+    transition: all 0.5s;
+}

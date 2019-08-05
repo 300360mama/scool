@@ -1,0 +1,32 @@
+/* About author*/
+
+.author_block {
+    width: 100;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 15px 0;
+}
+
+.author_block .author_icon {
+    width: 122px;
+    height: 122px;
+    margin: 0 20px 0 0;
+}
+
+.author_block .author_info_block {
+    display: flex;
+    flex-direction: column;
+    font: normal 14px OpenSans;
+    justify-content: center;
+}
+
+.author_block .author_info_block .author_name {
+    font: normal 21px OpenSans;
+    color: #282828;
+}
+
+.author_block .author_about {
+    font: normal 14px OpenSans;
+    color: #282828;
+    margin: 10px 0;
+}
