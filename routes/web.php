@@ -1,8 +1,8 @@
 <?php
 
-Route::get("/games", 'GamesController@index');
-Route::get("/interesting", 'InterestingController@index');
-Route::get("/preschooler", 'PreschoolerController@index');
-Route::get("/items", 'ItemsController@index');
-Route::get("/", 'HomeController@index');
-Route::get("/404", 'NotfoundController@notFound');
+Route::get("scool/games", 'GamesController@index');
+Route::get("scool/interesting", 'InterestingController@index');
+Route::get("scool/preschooler", 'PreschoolerController@index');
+Route::get("scool/items", 'ItemsController@index');
+Route::get("scool/", 'HomeController@index');
+Route::get("scool/404", 'NotfoundController@notFound');

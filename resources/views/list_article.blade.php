@@ -1,8 +1,14 @@
+@extends('blocks.layouts')
+@extends('blocks.header')
+@extends('blocks.footer')
+@extends('blocks.sidebar')
+@extends('blocks.like_article')
+
 @section('content')
 <main>
     <article>
     
-        <h3 class="title">How to build a garden in your apartment</h3>
+        <h3 class="title">LIst article</h3>
         <span class="article_category">Lifestyle</span>
         <span class="article_date">November 16, 2015</span>
         <img src="./image/content/article-img.jpg" alt="logo-article" class="article_logo">
@@ -48,10 +54,7 @@
         </a>
     </article>
 
-    @yield('about_author')
     @yield('like_article')
-
-    @yield('comments')
 </main>
 
 @endsection
