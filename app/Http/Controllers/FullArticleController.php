@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GamesController extends Controller
+class FullArticleController extends Controller
 {
-
     public function index() {
-        return view('list_article');
+        return view('full_article');
     }
 }

@@ -16,6 +16,8 @@
     <div class="wrapper">
         @yield('content')
         @yield('sidebar')
+    
+
     </div>
 
 

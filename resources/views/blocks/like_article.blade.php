@@ -1,4 +1,4 @@
-@section("like_article")
+@section('like_article')
 <div class="like_article_block">
     <h3 class="like_article_info">You might also like</h3>
     <section class="like_article_list">

@@ -2,7 +2,7 @@
 @extends('blocks.header')
 @extends('blocks.footer')
 @extends('blocks.sidebar')
-@extends('blocks.like_article')
+@include('blocks.like_article')
 
 @section('content')
 <main>
@@ -55,6 +55,7 @@
     </article>
 
     @yield('like_article')
+
 </main>
 
 @endsection
