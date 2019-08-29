@@ -1,6 +1,6 @@
 <?php
+Route::get("/{category}", 'ListArticleController@index');
+Route::get("/{category}/{id}", 'FullArticleController@index');
+Route::get("/", 'HomeController@index');
+Route::get("/404", 'NotfoundController@notFound');
 
-Route::get("scool/{category}", 'ListArticleController@index');
-Route::get("scool/{category}/{id}", 'FullArticleController@index');
-Route::get("scool/", 'HomeController@index');
-Route::get("scool/404", 'NotfoundController@notFound');
