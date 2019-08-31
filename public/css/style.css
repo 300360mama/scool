@@ -63,7 +63,7 @@ header {
 /* About author*/
 
 .author_block {
-    width: 100;
+    width: 100px;
     display: flex;
     justify-content: space-between;
     margin: 10px 0 15px 0;
@@ -271,5 +271,3 @@ footer .opacity_wrapper {
     width: 50%;
     height: 320px;
 }
-
-blocks/
