@@ -12,7 +12,7 @@
     <article>
     
         <h3 class="title">Full article</h3>
-        <span class="article_category">Lifestyle</span>
+
         <span class="article_date">November 16, 2015</span>
         <img src="./image/content/article-img.jpg" alt="logo-article" class="article_logo">
         <span class="article_text">

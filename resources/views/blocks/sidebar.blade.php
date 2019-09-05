@@ -1,36 +1,13 @@
 @section('sidebar')
 <aside>
-    <section class="about_me aside_section">
-        <span class="aside_title">About Me</span>
-        <img src="./image/sidebar/girl1.png" class="about_logo" alt=" image">
-        <span class="about_txt">
-            Ever since I was a little girl I have been deeply passionate about food.
-            My childhood was largely spent
-            scurrying between the restaurants of Hong Kong, where I grew up,
-            <br>
-            <a class="read_more" href="#">Read More</a>
-        </span>
 
-
-    </section>
-    <section class="follow_us aside_section">
-        <span class="aside_title">Subscribe & Follow</span>
-        <div class="social_block">
-            <a href="#" class="aside_social fab fa-twitter"></a>
-            <a href="#" class="aside_social fab fa-facebook-f "></a>
-            <a href="#" class="aside_social fab fa-instagram"></a>
-            <a href="#" class="aside_social fab fa-telegram"></a>
-        </div>
-    </section>
-    <section class="pinterest aside_section">
-        <span class="aside_title">Pinterest</span>
-        <div class="pinterest_imgs">
-            <img src="./image/sidebar/image1.png" alt="">
-            <img src="./image/sidebar/image1.png" alt="">
-            <img src="./image/sidebar/image1.png" alt="">
-            <img src="./image/sidebar/image1.png" alt="">
-            <img src="./image/sidebar/image1.png" alt="">
-            <img src="./image/sidebar/image1.png" alt="">
+    <section class="aside_section categories">
+        <span class="aside_title">Шкільні предмети</span>
+        <div class="categories_list">
+            <span class="category">Category 1</span>
+            <span class="category">Category 2</span>
+            <span class="category">Category 3</span>
+            <span class="category">Category 4</span>
         </div>
     </section>
     <section class="latest_post aside_section">
