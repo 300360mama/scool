@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = "category";
+    protected $table = "categories";
+
+
+    public function article()
+    {
+        return $this->belongsTo('App\Article');
+    }
 }
