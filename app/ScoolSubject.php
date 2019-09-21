@@ -9,6 +9,6 @@ class ScoolSubject extends Model
     
     public function article()
     {
-        return $this->belongsTo('App\Article');
+        return $this->hasMany('App\Article');
     }
 }

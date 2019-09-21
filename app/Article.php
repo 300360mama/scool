@@ -11,18 +11,18 @@ class Article extends Model
 
     public function category()
     {
-        return $this->hasOne('App\Category');
+      return $this->belongsTo('App\Category');
     }
 
 
     public function subcategory()
     {
-        return $this->hasOne('App\Subcategory');
+        return $this->belongsTo('App\Subcategory');
     }
 
 
     public function author()
     {
-        return $this->hasOne('App\Author');
+        return $this->belongsTo('App\Author');
     }
 }

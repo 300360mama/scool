@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Article;
-use App\Category;
+use Illuminate\Http\Request as Request;
+use App\Article as Article;
+use App\Category as Category;
 
-class ListArticleController extends Controller
-{
-    public function index() {
+class ListArticleController extends Controller {
+    public function index(Request $request) {
 
 
-    
-        $categories = Category::where('name', 'Items')->get();
+        $request_category = $request->category ? $request->category : '';
+        $category = Category::where('name', $request_category)->get();
 
-        foreach($categories as $category) {
-            print_r($category->article->id);
+        if($category) {
+            $category_id = $category[0]->id;
+            $category_name = $category[0]->name;
+        } else {
+            $category_id = [];
+            $category_name = [];
         }
-        
-        
+
+        $articles = Article::where('category_id', $category_id)->get();
+        $articles = $articles ? $articles : [];
+
+        return view('list_article', ['articles'=> $articles, 'category_name'=>$category_name]);
+  
     }
 }

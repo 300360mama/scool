@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as Request;
+use App\Article as Article;
 
 class FullArticleController extends Controller
 {
-    public function index() {
-        return view('full_article');
+    public function index(Request $request) {
+
+        $article_id = $request->id ? $request->id : 0;
+        $article = Article::find($article_id);
+
+        return view('full_article', ['article'=>$article]);
     }
 }
