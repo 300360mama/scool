@@ -1,7 +1,7 @@
 @section('about_author')
 <div class="author_block">
 
-        <img src="./image/comments/author.png" class="author_icon" alt="Author image">
+        <img src="/image/comments/author.png" class="author_icon" alt="Author image">
         <div class="author_info_block">
             <span class="author_name">
                 Anna Maria Novak

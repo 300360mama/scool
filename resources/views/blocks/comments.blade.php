@@ -5,7 +5,7 @@
         4 comments
     </h4>
     <div class="comment">
-        <img class="author_icon" src="./image/comments/author_icon.png" alt="Author icon">
+        <img class="author_icon" src="/image/comments/author_icon.png" alt="Author icon">
         <div class="comment_section">
             <span class="author_name">Angela Doe</span>
             <span class="date_publication">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="comment subcomment">
-        <img class="author_icon" src="./image/comments/author_icon.png" alt="Author icon">
+        <img class="author_icon" src="/image/comments/author_icon.png" alt="Author icon">
         <div class="comment_section">
             <span class="author_name">Angela Doe</span>
             <span class="date_publication">
@@ -36,7 +36,7 @@
         <a href="#" class="reply">Reply</a>
     </div>
     <div class="comment">
-        <img class="author_icon" src="./image/comments/author_icon.png" alt="Author icon">
+        <img class="author_icon" src="/image/comments/author_icon.png" alt="Author icon">
         <div class="comment_section">
             <span class="author_name">Angela Doe</span>
             <span class="date_publication">

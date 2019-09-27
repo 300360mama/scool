@@ -17,7 +17,7 @@
     <div class="wrapper">
 
         <div class="not_found">
-        <img class="not_found_img" src="./image/notFound/not-found.png" alt="Not found image">
+        <img class="not_found_img" src="/image/notFound/not-found.png" alt="Not found image">
         <h2 class="not_found_title">404 - PAGE NOT FOUND</h2> 
         <span class="not_found_text">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. 

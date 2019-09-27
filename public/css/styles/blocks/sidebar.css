@@ -116,11 +116,30 @@ aside .latest_post {
 
 .categories_list {
     width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    transition: 1s all;
+    height: 170px;
+}
+
+.categories_list.open_category {
+    transition: 1s all;
+    height: auto;
+}
+
+.categories .open_block {
+    font-size: 20px;
+    color: #7e7a7a;
+    margin: 5px 0;
+    cursor: pointer;
 }
 
 .categories_list .category {
+    position: relative;
     width: 100%;
     font-size: 13px;
     padding: 10px 5px;

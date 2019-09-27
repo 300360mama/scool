@@ -23,5 +23,9 @@
 
     @yield('footer')
 </body>
+@push('scripts')
+    <script src="/js/events.js"></script>
+@endpush
 
+@stack('scripts')
 </html>
