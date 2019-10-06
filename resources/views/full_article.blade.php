@@ -13,7 +13,7 @@
         <span class="article_date">{{ $article->created_at }}</span>
         <img src="/image/content/article-img.jpg" alt="logo-article" class="article_logo">
         <span class="article_text">
-                {{ $article->content_article }}
+            {{ $article->content_article }}
         </span>
 
 

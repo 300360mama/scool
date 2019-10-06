@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Article as Article;
 
-class HomeController extends Controller
+class HomeController extends ArticleController
 {
+    public function index(Request $request) {
 
-    public function index() {
-        return view('full_article');
+
+        $article = Article::find(1);
+
+        return view('full_article', [
+            'article'=>$article,
+            "subcategories" => $this->getSubcategories()
+            ]);
     }
 }
