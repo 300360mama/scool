@@ -17,7 +17,7 @@ class ListArticleController extends ArticleController {
 
         return view('list_article', [
             'articles'=> $articles,
-            'category_name'=>$category["category_name"],
+            'category'=>$category,
             "subcategories"=>$this->getSubcategories()
         ]);
   

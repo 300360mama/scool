@@ -15,11 +15,17 @@ class ArticleController extends Controller {
 
     protected function getCategory(Request $request) {
         $request_category = $request->category ? $request->category : '';
-        $category = Category::where('name', $request_category)->get();
+
+        if(!$request_category) {
+            $category = Category::find(1);
+        }else {
+            $category = Category::where('name', $request_category)->get();
+        }
+        
  
         if($category) {
-            $category_id = $category[0]->id;
-            $category_name = $category[0]->name;
+            $category_id = $category->id;
+            $category_name = $category->name;
         } else {
             $category_id = 0;
             $category_name = '';
