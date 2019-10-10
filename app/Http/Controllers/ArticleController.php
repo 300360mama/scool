@@ -5,29 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Subcategory as Subcategory;
 use App\Category as Category;
+use App\Article as Article; 
 
 class ArticleController extends Controller {
     
-
+    
     protected function getSubcategories() {
         return Subcategory::all();
     }
 
-    protected function getCategory(Request $request) {
-        $request_category = $request->category ? $request->category : '';
+    protected function getCategory(string $category_name) {
 
-        if(!$request_category) {
-            $category = Category::find(1);
-        }else {
-            $category = Category::where('name', $request_category)->get();
-        }
-        
- 
-        if($category) {
-            $category_id = $category->id;
-            $category_name = $category->name;
+        $category_isset = Category::where("name", $category_name)->exists();
+    
+        if($category_isset) {
+            $category = Category::where("name", $category_name)->get(["name", "id"]);
+            $category_id = $category[0]->id;
+            $category_name = $category[0]->name;      
         } else {
-            $category_id = 0;
+            $category_id = 1;
             $category_name = '';
         }
 
@@ -35,6 +31,11 @@ class ArticleController extends Controller {
             "category_id"=>$category_id,
             "category_name"=>$category_name
         ];
+    }
+
+    protected function getLatestArticle($quantity) {
+        $res = Article::orderBy("created_at","desc'")->take($quantity)->get();
+        return $res;
     }
 
 }

@@ -9,15 +9,14 @@ class FullArticleController extends ArticleController
 {
     public function index(Request $request) {
 
-        $article_id = $request->id ? $request->id : 0;
+        $article_id = $request->id ? $request->id : 1;
         $article = Article::find($article_id);
-        $category = $this->getCategory($request);
-
+        dump($article);
 
         return view('full_article', [
             'article'=>$article,
             "subcategories"=>$this->getSubcategories(),
-            "category"=>$category
+            "latest_post"=>$this->getLatestArticle(4)
             ]);
     }
 }
