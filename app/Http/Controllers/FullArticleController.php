@@ -13,6 +13,7 @@ class FullArticleController extends ArticleController
         $article = Article::find($article_id);
         dump($article);
 
+
         return view('full_article', [
             'article'=>$article,
             "subcategories"=>$this->getSubcategories(),

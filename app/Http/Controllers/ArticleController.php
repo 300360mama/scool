@@ -14,23 +14,15 @@ class ArticleController extends Controller {
         return Subcategory::all();
     }
 
-    protected function getCategory(string $category_name) {
+    protected function getCategoryId(string $category_name) {
 
         $category_isset = Category::where("name", $category_name)->exists();
-    
-        if($category_isset) {
-            $category = Category::where("name", $category_name)->get(["name", "id"]);
-            $category_id = $category[0]->id;
-            $category_name = $category[0]->name;      
-        } else {
-            $category_id = 1;
-            $category_name = '';
-        }
 
-        return [
-            "category_id"=>$category_id,
-            "category_name"=>$category_name
-        ];
+        if($category_isset) {
+            $category_id = Category::where("name", $category_name)->get(["id"]);
+            return $category_id[0]->id;
+        } 
+        return 1;
     }
 
     protected function getLatestArticle($quantity) {

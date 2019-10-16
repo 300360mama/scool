@@ -12,14 +12,15 @@ class ListArticleController extends ArticleController {
     public function index(Request $request) {
 
         $category_name = $request->category ? $request->category : "items";
-        $category = $this->getCategory($category_name);
+        $category_id = $this->getCategoryId($category_name);
 
-        $articles = Article::where('category_id', $category["category_id"])->get();
+        dump($category_id);
+
+        $articles = Article::where('category_id', $category_id)->get();
         $articles = $articles ? $articles : [];
 
         return view('list_article', [
             'articles'=> $articles,
-            'category'=>$category,
             "subcategories"=>$this->getSubcategories(),
             "latest_post"=>$this->getLatestArticle(4)
         ]);
