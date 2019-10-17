@@ -30,5 +30,12 @@ class ArticleController extends Controller {
         return $res;
     }
 
+    protected function getLikeArticle() {
+        $count_article =  Article::get(["id"]);
+
+
+        dump($count_article);
+    }
+
 }
 

@@ -5,7 +5,7 @@
         <span class="aside_title">Шкільні предмети</span>
         <div id="categoriesList" class="categories_list">
             @foreach ($subcategories as $subcategory)
-             <a href="/subcategory/{{ $subcategory->name }}" class="category">{{ $subcategory->name }}</a>
+             <a href="/subcategory/{{ $subcategory->id }}" class="category">{{ $subcategory->name }}</a>
             @endforeach
         </div>
         <i id="openArrow" class="open_block fa-angle-double-down fa"></i>
