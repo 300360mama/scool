@@ -16,12 +16,8 @@
         <span class="article_text">
             {{ $article->content_article }}
         </span>
-
-
     </article>
 
-
-    
     @yield('comments')
     @yield('like_article')
    

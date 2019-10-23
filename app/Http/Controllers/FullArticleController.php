@@ -11,7 +11,7 @@ class FullArticleController extends ArticleController
 
         $article_id = $request->id ? $request->id : 1;
         $article = Article::find($article_id);
-        dump($article);
+       // dump($article);
 
 
         return view('full_article', [

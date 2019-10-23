@@ -14,15 +14,15 @@ class ListArticleController extends ArticleController {
         $category_name = $request->category ? $request->category : "items";
         $category_id = $this->getCategoryId($category_name);
 
-        dump($category_id);
-
         $articles = Article::where('category_id', $category_id)->get();
         $articles = $articles ? $articles : [];
 
+        $like_articles = $this->getLikeArticle();
         return view('list_article', [
             'articles'=> $articles,
             "subcategories"=>$this->getSubcategories(),
-            "latest_post"=>$this->getLatestArticle(4)
+            "latest_post"=>$this->getLatestArticle(4),
+            "like_articles"=>$like_articles
         ]);
   
     }

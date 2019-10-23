@@ -31,10 +31,19 @@ class ArticleController extends Controller {
     }
 
     protected function getLikeArticle() {
-        $count_article =  Article::get(["id"]);
+        $article_count = count(Article::get(["id"]));
+        $quantity_like_article = 3;
+        $like_article_list = [];
 
+        while (count($like_article_list) < $quantity_like_article) {
+            $rand_id = mt_rand(1, $article_count);
+            if(in_array($rand_id, $like_article_list)) continue;
+            $like_article_list[] = $rand_id;
+        }
 
-        dump($count_article);
+        $articles = Article::whereIn("id", $like_article_list)->get();
+        return $articles;
+
     }
 
 }
