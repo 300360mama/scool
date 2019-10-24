@@ -11,13 +11,15 @@ class FullArticleController extends ArticleController
 
         $article_id = $request->id ? $request->id : 1;
         $article = Article::find($article_id);
+        $like_articles = $this->getLikeArticle();
        // dump($article);
 
 
         return view('full_article', [
             'article'=>$article,
             "subcategories"=>$this->getSubcategories(),
-            "latest_post"=>$this->getLatestArticle(4)
+            "latest_post"=>$this->getLatestArticle(4),
+            "like_articles"=>$like_articles
             ]);
     }
 }

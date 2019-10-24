@@ -14,12 +14,13 @@ class SubcategoryController extends ArticleController
         $articles = Article::where('subcategory_id', $subcategory_id)->orderBy("created_at","desc'")->get();
         $articles = $articles ? $articles : [];
 
-        $this->getLikeArticle();
+        $like_articles = $this->getLikeArticle();
 
         return view('list_article', [
             'articles'=> $articles,
             "subcategories"=>$this->getSubcategories(),
-            "latest_post"=>$this->getLatestArticle(4)
+            "latest_post"=>$this->getLatestArticle(4),
+            "like_articles"=>$like_articles
         ]);
   
     }

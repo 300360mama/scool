@@ -18,7 +18,6 @@
         </span>
     </article>
 
-    @yield('comments')
     @yield('like_article')
    
 
