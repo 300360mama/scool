@@ -46,5 +46,35 @@ class ArticleController extends Controller {
 
     }
 
+    public function delete(Request $request) {
+
+        if($request->isMethod("post")) {
+            dump($request);
+        }
+       
+
+        return json_encode($str);
+
+    
+    }
+
+    public function update(array $list_rows) {
+
+    }
+
+    public function create(array $list_rows) {
+
+    }
+
+    public function read() {
+        $articles = Article::all()->toArray();
+       
+        return view("crud.read", [
+            "values"=>$articles,
+            "table"=>"articles"
+        
+        ]);
+    }
+
 }
 

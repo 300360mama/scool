@@ -1,0 +1,60 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+.title {
+    text-align: center;
+}
+
+.read_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cell {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    max-height: 100px;
+    width: 190px;
+    overflow: auto;
+    font-size: 14px;
+}
+
+.cell_fixed_size {
+    width: 72px;
+}
+
+.cell:nth-of-type(even) {
+    background: #0303035c;
+}
+
+.cell .change {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.cell .change:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.cell .update {
+    color: green;
+}
+
+.cell .remove {
+    color: red;
+}
