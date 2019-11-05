@@ -49,13 +49,25 @@ class ArticleController extends Controller {
     public function delete(Request $request) {
 
         if($request->isMethod("post")) {
-            dump($request);
+            $id = $request->remove;
+            $res = Article::where("id", 123)->delete();
+            $response = [
+                "result"=>false
+            ];
+            
+            if($res) {
+                $response = [
+                    "result"=>true
+                ]; 
+                return json_encode($response);
+            } else {
+
+            }
+
+            ;return json_encode($response)
         }
        
-
-        return json_encode($str);
-
-    
+        
     }
 
     public function update(array $list_rows) {
