@@ -41,10 +41,12 @@
                 @endforeach
                 <form method="post" action="/crud/delete/{{ $table }}"  class="cell cell_fixed_size">
                     {{ csrf_field() }}
-                    <button type="submit" name="remove" value="{{ $value['id'] }}" class="remove change">Remove</button>
+                    <input type="hidden" name="id_row" class value="{{ $value['id'] }}">
+                    <button type="submit" name="remove"  class="remove change">Remove</button>
                 </form>
                  <form method="post" action="/crud/update/{{ $table }}"  class="cell cell_fixed_size">
                     {{ csrf_field() }}
+                    <input type="hidden" name="id_row" class value="{{ $value['id'] }}">
                     <button type="submit" value="{{ $value['id'] }}" class="update change">Update</button>
                 </form>
 

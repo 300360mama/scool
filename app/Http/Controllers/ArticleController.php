@@ -47,26 +47,23 @@ class ArticleController extends Controller {
     }
 
     public function delete(Request $request) {
+    
 
-        if($request->isMethod("post")) {
-            $id = $request->remove;
-            $res = Article::where("id", 123)->delete();
-            $response = [
-                "result"=>false
-            ];
-            
-            if($res) {
-                $response = [
-                    "result"=>true
-                ]; 
-                return json_encode($response);
-            } else {
-
-            }
-
-            ;return json_encode($response)
+        if($request->isMethod("post")) {  
         }
-       
+
+        if($request->ajax()) {
+
+            $id = $request->id_row;
+
+            $row = Article::where("id", $id);
+            $res = $row->delete();
+            $response = [
+                "result"=>$res,
+                "remove"=>"adsa"
+            ]; 
+            return json_encode($response);   
+        }
         
     }
 
