@@ -18,9 +18,23 @@
         <div id="readWrapper" class="read_wrapper">
 
            <form action="" method="post">
-           
+           @foreach($fields as $name => $field)
 
-       
+           @if(array_key_exists($name, $relationships)) 
+           <select name="{{ $name }}">
+
+           @foreach($relationships[$name] as $value)
+
+           <option value="{{ $value }}">{{ $value }}</option>
+
+           @endforeach
+           
+           </select>
+           @else
+           <input type="text" value="{{ $field }}">
+           @endif
+           
+           @endforeach
            </form>
         </div>
 

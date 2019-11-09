@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Subcategory as Subcategory;
 use App\Category as Category;
+use App\Author as Author;
 use App\Article as Article; 
 
 class ArticleController extends Controller {
@@ -68,12 +69,28 @@ class ArticleController extends Controller {
     }
 
     public function update(Request $request) {
-        dump($request->id_row);
+    
 
-        $articles = Article::all();
-        dump($articles);
+        $relationships = [];
+        $authors = Author::get(["id", "last_name"])->toArray();
+        $subcategories = Subcategory::get(["id", "name"])->toArray();
+        $categories = Category::get(["id", "name"])->toArray();
 
-        return view("crud.update");
+        $relationships["category_id"] = $categories;
+        $relationships["subcategory_id"] = $subcategories;
+        $relationships["author_id"] = $authors;
+    
+        
+
+        $articles = Article::where("id", $request->id_row)->get()->toArray();
+
+        dump($relationships);
+        
+       
+        return view("crud.update", [
+            "fields"=> $articles[0],
+            "relationships"=> $relationships
+        ]);
     }
 
     public function create(array $list_rows) {
