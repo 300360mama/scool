@@ -57,9 +57,6 @@
 
     </div>
 
-
-    @yield('footer')
-
     @push('scripts')
     <script src="/js/crud/read.js"></script>
     @endpush

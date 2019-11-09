@@ -67,8 +67,13 @@ class ArticleController extends Controller {
         
     }
 
-    public function update(array $list_rows) {
+    public function update(Request $request) {
+        dump($request->id_row);
 
+        $articles = Article::all();
+        dump($articles);
+
+        return view("crud.update");
     }
 
     public function create(array $list_rows) {
