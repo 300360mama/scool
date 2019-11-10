@@ -1,6 +1,7 @@
 <?php
 
 Route::post("/crud/delete/articles", "ArticleController@delete");
+Route::post("/crud/show/articles", "ArticleController@show");
 Route::post("/crud/update/articles", "ArticleController@update");
 Route::get("/crud", "ArticleController@read");
 Route::get("/subcategory/{id}", 'SubcategoryController@index');

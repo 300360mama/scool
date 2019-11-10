@@ -44,7 +44,7 @@
                     <input type="hidden" name="id_row" class value="{{ $value['id'] }}">
                     <button type="submit" name="remove"  class="remove change">Remove</button>
                 </form>
-                 <form method="post" action="/crud/update/{{ $table }}"  class="cell cell_fixed_size">
+                 <form method="post" action="/crud/show/{{ $table }}"  class="cell cell_fixed_size">
                     {{ csrf_field() }}
                     <input type="hidden" name="id_row" class value="{{ $value['id'] }}">
                     <button type="submit" value="{{ $value['id'] }}" class="update change">Update</button>

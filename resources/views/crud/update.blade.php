@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/styles/crud/read.css">
+    <link rel="stylesheet" href="/css/styles/crud/update.css">
     <link rel="stylesheet" href="/css/fontawesome/all.css">
 </head>
 
@@ -15,25 +15,36 @@
 
     <div class="wrapper">
         <h2 class="title">CRUD panel</h2>
-        <div id="readWrapper" class="read_wrapper">
+        <div id="readWrapper" class="update_wrapper">
 
-           <form action="" method="post">
+           <form class="update_form" action="" method="post">
            @foreach($fields as $name => $field)
+            @continue($name === "created_at" || $name === "updated_at" || $name === "id")
 
-           @if(array_key_exists($name, $relationships)) 
-           <select name="{{ $name }}">
+           <fieldset class="field_section">
+            <span class="field_title">{{ $name }}</span>
 
-           @foreach($relationships[$name] as $value)
+            @if(array_key_exists($name, $relationships)) 
+            <select class="row" name="{{ $name }}">
 
-           <option value="{{ $value }}">{{ $value }}</option>
+            @foreach($relationships[$name] as $values)
 
-           @endforeach
-           
-           </select>
-           @else
-           <input type="text" value="{{ $field }}">
-           @endif
-           
+            @foreach($values as $value)
+            <option value="{{ $value }}">{{ $value }}</option>
+
+            @endforeach
+
+            @endforeach
+
+            </select>
+            @else 
+
+            <input class="row" type="text" value="{{ $field }}">
+            @endif
+
+           </fieldset>
+
+         
            @endforeach
            </form>
         </div>

@@ -71,26 +71,7 @@ class ArticleController extends Controller {
     public function update(Request $request) {
     
 
-        $relationships = [];
-        $authors = Author::get(["id", "last_name"])->toArray();
-        $subcategories = Subcategory::get(["id", "name"])->toArray();
-        $categories = Category::get(["id", "name"])->toArray();
-
-        $relationships["category_id"] = $categories;
-        $relationships["subcategory_id"] = $subcategories;
-        $relationships["author_id"] = $authors;
-    
         
-
-        $articles = Article::where("id", $request->id_row)->get()->toArray();
-
-        dump($relationships);
-        
-       
-        return view("crud.update", [
-            "fields"=> $articles[0],
-            "relationships"=> $relationships
-        ]);
     }
 
     public function create(array $list_rows) {
@@ -107,5 +88,24 @@ class ArticleController extends Controller {
         ]);
     }
 
+    public function show(Request $request) {
+        $relationships = [];
+        $authors = Author::get(["id", "last_name"])->toArray();
+        $subcategories = Subcategory::get(["id", "name"])->toArray();
+        $categories = Category::get(["id", "name"])->toArray();
+
+        $relationships["category_id"] = $categories;
+        $relationships["subcategory_id"] = $subcategories;
+        $relationships["author_id"] = $authors;
+
+        $articles = Article::where("id", $request->id_row)->get()->toArray();
+       
+        return view("crud.update", [
+            "fields"=> $articles[0],
+            "relationships"=> $relationships
+        ]);
+
+    }
+ 
 }
 
