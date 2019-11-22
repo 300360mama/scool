@@ -36,12 +36,15 @@ class ArticleController extends Controller {
         $quantity_like_article = 3;
         $like_article_list = [];
 
+        if($article_count < 3) {
+            $articles = Article::all();
+            return $articles; 
+        }
         while (count($like_article_list) < $quantity_like_article) {
             $rand_id = mt_rand(1, $article_count);
             if(in_array($rand_id, $like_article_list)) continue;
             $like_article_list[] = $rand_id;
         }
-
         $articles = Article::whereIn("id", $like_article_list)->get();
         return $articles;
 
