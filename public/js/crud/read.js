@@ -1,33 +1,33 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     let readWrapper = document.getElementById("readWrapper");
-    readWrapper.addEventListener("click", function(e) {
+    readWrapper.addEventListener("click", function (e) {
+
+        let token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
         if (e.target.classList.contains("remove")) {
             e.preventDefault();
-
             let form = e.target.parentNode;
-            let token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-
+            let path = form.getAttribute("action");
+            console.log(path);
+            let row = e.target.parentNode.parentNode;
             let data = new FormData(form);
 
-            fetch("/crud/delete/articles", {
+            fetch(path, {
                 body: data,
                 headers: {
                     'X-CSRF-TOKEN': token,
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                //credentials: "same-origin",
+                credentials: "same-origin",
                 method: "post"
             }).then((response) => {
                 response.json().then((res) => {
-                    console.log(res);
+                    if (res.result === 1) {
+                        row.parentNode.removeChild(row);
+                    }
                 });;
             })
-        }
-
-        if (e.target.classList.contains("update")) {
-            e.preventDefault();
         }
     })
 });

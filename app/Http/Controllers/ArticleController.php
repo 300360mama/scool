@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Subcategory as Subcategory;
 use App\Category as Category;
+use App\Author as Author;
 use App\Article as Article; 
 
 class ArticleController extends Controller {
@@ -47,38 +48,28 @@ class ArticleController extends Controller {
     }
 
     public function delete(Request $request) {
-        // $id = (int)$request->remove;
-        //     $res = Article::find($id);
-        //     dump($id);
-        //     dump(gettype($id));
-        // dump($_POST);
-        //dump($request);
+    
+        if($request->isMethod("post")) {  
+        }
 
-        $id = (int)$request->remove;
         if($request->ajax()) {
-            
-            // $res = Article::find($id);
-            // dump($id);
 
-            //$res = $res ? $res->delete() : false;
-         
+            $id = $request->id_row;
+
+            $row = Article::where("id", $id);
+            $res = $row->delete();
             $response = [
-                "result"=>"res",
-                "id"=>$id,
-                "remove"=>$request->remove
+                "result"=>$res,
+                "remove"=>"adsa"
             ]; 
-            return json_encode($response);    
+            return json_encode($response);   
         }
         
     }
 
-    public function update(array $list_rows) {
+    public function update(Request $request) {}
 
-    }
-
-    public function create(array $list_rows) {
-
-    }
+    public function create(array $list_rows) {}
 
     public function read() {
         $articles = Article::all()->toArray();
@@ -90,5 +81,24 @@ class ArticleController extends Controller {
         ]);
     }
 
+    public function show(Request $request) {
+        $relationships = [];
+        $authors = Author::get(["id", "last_name"])->toArray();
+        $subcategories = Subcategory::get(["id", "name"])->toArray();
+        $categories = Category::get(["id", "name"])->toArray();
+
+        $relationships["category_id"] = $categories;
+        $relationships["subcategory_id"] = $subcategories;
+        $relationships["author_id"] = $authors;
+
+        $articles = Article::where("id", $request->id_row)->get()->toArray();
+       
+        return view("crud.update", [
+            "fields"=> $articles[0],
+            "relationships"=> $relationships
+        ]);
+
+    }
+ 
 }
 

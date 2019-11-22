@@ -1,0 +1,24 @@
+.update_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update_form .row {
+    width: 100%;
+    margin: 5px 0 0 0;
+}
+
+.update_form .field_title {
+    font: 400 20px RobotoMono;
+    color: green;
+}
+
+.update_form .field_section {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 15px 10px;
+    
+}
