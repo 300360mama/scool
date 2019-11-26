@@ -1,7 +1,7 @@
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
 
     let readWrapper = document.getElementById("readWrapper");
-    readWrapper.addEventListener("click", function (e) {
+    readWrapper.addEventListener("click", function(e) {
 
         let token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
             e.preventDefault();
             let form = e.target.parentNode;
             let path = form.getAttribute("action");
-            console.log(path);
             let row = e.target.parentNode.parentNode;
             let data = new FormData(form);
 

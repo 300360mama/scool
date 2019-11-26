@@ -70,7 +70,33 @@ class ArticleController extends Controller {
         
     }
 
-    public function update(Request $request) {}
+    public function update(Request $request) {
+
+        $res = [
+            "result"=> false
+        ];
+
+        if($request->ajax()) {
+
+            $article = Article::find($request->id);
+            $article->content_article = $request->content_article;
+            $article->title_article = $request->title_article;
+            $article->category_id = $request->category_id;
+            $article->author_id = $request->author_id;
+            $article->subcategory_id = $request->subcategory_id;
+            $article->updated_at = time();
+            $isSave = $article->save();
+           
+            if($isSave) {
+                $res  = [
+                    "result"=> true
+                ];
+            }
+        }
+    
+        
+        return json_encode($res);
+    }
 
     public function create(array $list_rows) {}
 
@@ -85,6 +111,9 @@ class ArticleController extends Controller {
     }
 
     public function show(Request $request) {
+
+        
+    
         $relationships = [];
         $authors = Author::get(["id", "last_name"])->toArray();
         $subcategories = Subcategory::get(["id", "name"])->toArray();
@@ -94,7 +123,11 @@ class ArticleController extends Controller {
         $relationships["subcategory_id"] = $subcategories;
         $relationships["author_id"] = $authors;
 
+
         $articles = Article::where("id", $request->id_row)->get()->toArray();
+        dump($articles[0]);
+        dump($relationships);
+
        
         return view("crud.update", [
             "fields"=> $articles[0],

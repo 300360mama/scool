@@ -13,46 +13,54 @@
 
 <body>
 
-    <div class="wrapper">
+    <div class="update_wrapper" id="updateWrapper">
         <h2 class="title">CRUD panel</h2>
         <div id="readWrapper" class="update_wrapper">
 
-           <form class="update_form" action="" method="post">
-           @foreach($fields as $name => $field)
-            @continue($name === "created_at" || $name === "updated_at" || $name === "id")
+           <form class="update_form" id="updateForm" action="/crud/update/articles" method="post">
+            {{ csrf_field() }}
+            @foreach($fields as $name => $field)
+                @continue($name === "created_at" || $name === "updated_at")
+                <fieldset class="field_section">
+                    <span class="field_title">{{ $name }}</span>
 
-           <fieldset class="field_section">
-            <span class="field_title">{{ $name }}</span>
+                    @if(array_key_exists($name, $relationships)) 
+                        <select class="row" name="{{ $name }}">
 
-            @if(array_key_exists($name, $relationships)) 
-            <select class="row" name="{{ $name }}">
+                        @foreach($relationships[$name] as $values)
 
-            @foreach($relationships[$name] as $values)
+                            @foreach($values as $key=>$value)
 
-            @foreach($values as $value)
-            <option value="{{ $value }}">{{ $value }}</option>
+                                @continue($key === 'id')
+                                @if($fields[$name] === $values['id'])
+                                    <option value="{{ $values['id'] }}" selected >{{ $value }}</option>
+                                @else
+                                    <option value="{{ $values['id'] }}">{{ $value }}</option>
+                                @endif
+                                
 
+                            @endforeach
+
+                        @endforeach
+
+                        </select>
+                    @elseif($name === 'id')
+                        <input name="id" type="hidden" id="id" value="{{ $field }}">
+                    @else 
+                        <textarea name="{{ $name }}"class="row" type="text" rows="5">{{ $field }}</textarea>
+                    @endif
+    
+                </fieldset>
             @endforeach
 
-            @endforeach
-
-            </select>
-            @else 
-
-            <input class="row" type="text" value="{{ $field }}">
-            @endif
-
-           </fieldset>
-
-         
-           @endforeach
+            <input type="submit" name="update" id="update">
            </form>
         </div>
 
     </div>
 
     @push('scripts')
-    <script src="/js/crud/read.js"></script>
+    <script src="/js/crud/update.js"></script>
     @endpush
 
     @stack('scripts') 
