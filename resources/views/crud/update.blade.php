@@ -15,7 +15,11 @@
 
     <div class="update_wrapper" id="updateWrapper">
         <h2 class="title">CRUD panel</h2>
+
+        <a href="{{ url()->previous() }}">Попередня</a>
+
         <div id="readWrapper" class="update_wrapper">
+            <div class="message"></div>
 
            <form class="update_form" id="updateForm" action="/crud/update/articles" method="post">
             {{ csrf_field() }}
@@ -36,8 +40,7 @@
                                     <option value="{{ $values['id'] }}" selected >{{ $value }}</option>
                                 @else
                                     <option value="{{ $values['id'] }}">{{ $value }}</option>
-                                @endif
-                                
+                                @endif      
 
                             @endforeach
 
