@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Subcategory as Subcategory;
+use App\Category as Category;
+use App\Author as Author;
+use App\Article as Article; 
 
 class CrudController extends Controller
 {
@@ -15,7 +19,7 @@ class CrudController extends Controller
 
             $id = $request->id_row;
 
-            $row = Article::where("id", $id);
+            $row = DB::table($table)->where("id", $id)->get();
             $res = $row->delete();
             $response = [
                 "result"=>$res,
@@ -57,6 +61,8 @@ class CrudController extends Controller
     public function create(array $list_rows) {}
 
     public function read() {
+
+        $this->getRelationshipsTable("articles");
         $articles = Article::all()->toArray();
        
         return view("crud.read", [
@@ -67,6 +73,10 @@ class CrudController extends Controller
     }
 
     public function show(Request $request) {
+ 
+      
+
+        $table = $request->table ? $request->table : "articles";
 
         $relationships = [];
         $authors = Author::get(["id", "last_name"])->toArray();
@@ -83,5 +93,14 @@ class CrudController extends Controller
             "relationships"=> $relationships
         ]);
 
+    }
+
+    private function getRelationshipsTable($table) {
+        $rows = DB::select("SHOW COLUMNS FROM $table");
+
+        $rows = array_map(function($value){
+            $a = $value->Field;
+            return $a;
+        }, $rows);
     }
 }

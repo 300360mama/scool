@@ -50,7 +50,6 @@ class ArticleController extends Controller {
 
     }
 
-    
  
 }
 
