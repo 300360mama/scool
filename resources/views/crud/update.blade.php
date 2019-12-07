@@ -26,9 +26,8 @@
             @foreach($fields as $name => $field)
                 @continue($name === "created_at" || $name === "updated_at")
                 <fieldset class="field_section">
-                    <span class="field_title">{{ $name }}</span>
-
-                    @if(array_key_exists($name, $relationships)) 
+                    @if(array_key_exists($name, $relationships))
+                        <span class="field_title">{{ $name }}</span> 
                         <select class="row" name="{{ $name }}">
 
                         @foreach($relationships[$name] as $values)
@@ -50,6 +49,7 @@
                     @elseif($name === 'id')
                         <input name="id" type="hidden" id="id" value="{{ $field }}">
                     @else 
+                        <span class="field_title">{{ $name }}</span>
                         <textarea name="{{ $name }}"class="row" type="text" rows="5">{{ $field }}</textarea>
                     @endif
     

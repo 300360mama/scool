@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Subcategory as Subcategory;
-use App\Category as Category;
-use App\Author as Author;
-use App\Article as Article; 
+ 
 
 class CrudController extends Controller
 {
@@ -53,17 +50,19 @@ class CrudController extends Controller
                 ];
             }
         }
-    
         
         return json_encode($res);
     }
 
     public function create(array $list_rows) {}
 
-    public function read() {
+    public function read(Request $request) {
 
-        $this->getRelationshipsTable("articles");
-        $articles = Article::all()->toArray();
+        $table = $request->table ?  $request->table : 'articles';
+
+        $tableModel = $this->getTableModel($table);
+        dump($tableModel);
+        $articles = $tableModel::all()->toArray();
        
         return view("crud.read", [
             "values"=>$articles,
@@ -74,33 +73,79 @@ class CrudController extends Controller
 
     public function show(Request $request) {
  
-      
-
         $table = $request->table ? $request->table : "articles";
-
+        $listRelationships = $this->getRelationshipsTable($table);
+        
         $relationships = [];
-        $authors = Author::get(["id", "last_name"])->toArray();
-        $subcategories = Subcategory::get(["id", "name"])->toArray();
-        $categories = Category::get(["id", "name"])->toArray();
+        $tableModel = $this->getTableModel($table);
 
-        $relationships["category_id"] = $categories;
-        $relationships["subcategory_id"] = $subcategories;
-        $relationships["author_id"] = $authors;
-        $articles = Article::where("id", $request->id_row)->get()->toArray();
-     
+        $article = $tableModel->find($request->id_row)->toArray();
+
+        
+        dump($relationships);
+    
         return view("crud.update", [
-            "fields"=> $articles[0],
+            "fields"=> $article,
             "relationships"=> $relationships
         ]);
 
     }
 
+    /**
+     * getRelationshipsTable
+     *
+     * @param  strint $table
+     *
+     * @return array
+     */
     private function getRelationshipsTable($table) {
         $rows = DB::select("SHOW COLUMNS FROM $table");
-
         $rows = array_map(function($value){
-            $a = $value->Field;
-            return $a;
+            if(substr($value->Field, -3, 3) === "_id") return $value->Field;
         }, $rows);
+        $rows = array_filter($rows, function($v){
+            if($v) return true;
+        });
+
+        return $rows;
     }
+
+    /**
+     * getRelationshipsColumnName
+     *
+     * @return array
+     */
+    private static function getRelationshipsColumnName(){
+        return [
+            "author"=>"last_name",
+            "subcategory"=>"name",
+            "category"=>"name"
+        ];
+    }
+
+    /**
+     * getTableModel
+     *
+     * @param  string $table
+     *
+     * @return class
+     */
+    private function getTableModel($table) {
+
+        $table =  ucfirst(strtolower($table));
+        $model = "";
+        switch($table) {
+            case "Author": 
+                $model = new \App\Author;
+            break;
+            case "Articles": 
+                $model = new \App\Article;
+            break;
+        };
+
+        return $model;
+
+    }
+
+    
 }

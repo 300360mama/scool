@@ -2,7 +2,7 @@
 
 Route::post("/crud/delete/{table}", "CrudController@delete");
 Route::post("/crud/show/{table}", "CrudController@show");
-Route::get("/crud/read/{tabel}", "CrudController@read");
+Route::get("/crud/read/{table}", "CrudController@read");
 Route::post("/crud/update/{table}", "CrudController@update");
 Route::get("/crud", "CrudController@read");
 Route::get("/subcategory/{id}", 'SubcategoryController@index');
