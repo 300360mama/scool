@@ -29,18 +29,18 @@ class CrudController extends Controller
 
     public function update(Request $request) {
 
+        $table = $request->table ? $request->table : "articles";
+
         $res = [
             "result"=> false
         ];
 
         if($request->ajax()) {
 
-            $article = Article::find($request->id);
-            $article->content_article = $request->content_article;
-            $article->title_article = $request->title_article;
-            $article->category_id = $request->category_id;
-            $article->author_id = $request->author_id;
-            $article->subcategory_id = $request->subcategory_id;
+
+            $tableModel = getTableModel($table);
+            $tableModel = Article::find($request->id);
+            
             $article->updated_at = time();
             $isSave = $article->save();
            
@@ -54,19 +54,19 @@ class CrudController extends Controller
         return json_encode($res);
     }
 
-    public function create(array $list_rows) {}
+    public function create(Request $table) {
+        
+    }
 
     public function read(Request $request) {
 
         $table = $request->table ?  $request->table : 'articles';
-
         $tableModel = $this->getTableModel($table);
-        dump($tableModel);
         $articles = $tableModel::all()->toArray();
        
         return view("crud.read", [
             "values"=>$articles,
-            "table"=>"articles"
+            "table"=>$table
         
         ]);
     }
@@ -75,17 +75,21 @@ class CrudController extends Controller
  
         $table = $request->table ? $request->table : "articles";
         $listRelationships = $this->getRelationshipsTable($table);
-        
         $relationships = [];
         $tableModel = $this->getTableModel($table);
 
-        $article = $tableModel->find($request->id_row)->toArray();
+        foreach($listRelationships as $value) {
+            $relationshipsTable = substr($value, 0, -3);
+            $relationshipsTableModel = $this->getTableModel($relationshipsTable);
+            $columnName = self::getRelationshipsColumnName($relationshipsTable);
+            $res = $relationshipsTableModel->get(["id", $columnName ])->toArray();
+            $relationships[$value] = $res; 
+        }
 
-        
-        dump($relationships);
+        $fields = $tableModel->find($request->id_row)->toArray();
     
         return view("crud.update", [
-            "fields"=> $article,
+            "fields"=> $fields,
             "relationships"=> $relationships
         ]);
 
@@ -115,12 +119,14 @@ class CrudController extends Controller
      *
      * @return array
      */
-    private static function getRelationshipsColumnName(){
-        return [
+    private static function getRelationshipsColumnName($table){
+
+        $list = [
             "author"=>"last_name",
             "subcategory"=>"name",
             "category"=>"name"
         ];
+        return $list[$table]; 
     }
 
     /**
@@ -140,6 +146,12 @@ class CrudController extends Controller
             break;
             case "Articles": 
                 $model = new \App\Article;
+            break;
+            case "Categories": 
+                $model = new \App\Category;
+            break;
+            case "Subcategory": 
+                $model = new \App\Subcategory;
             break;
         };
 
