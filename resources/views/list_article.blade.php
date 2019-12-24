@@ -14,12 +14,12 @@
             <h3 class="title">{{ $article->title_article }}</h3>
             <span class="article_category">{{ $article->category->name }}</span>
             <span class="article_date">{{ $article->created_at->format("d-M-Y") }}</span>
-            <img src="/image/content/article-img.jpg" alt="logo-article" class="article_logo">
+            <img src="/scool/image/content/article-img.jpg" alt="logo-article" class="article_logo">
             <span class="article_text">
                 {{ $article->content_article }}
             </span>
 
-            <a href="/{{ $article->category->name }}/{{ $article->id }}" class="continue_read">Продовжити читання
+            <a href="./{{ $article->category->name }}/{{ $article->id }}" class="continue_read">Продовжити читання
                 <span class="fa fa-arrow-right"></span>
             </a>
         </article>

@@ -6,25 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/fontawesome/all.css">
+    <link rel="stylesheet" href="/scool/css/style.css">
+    <link rel="stylesheet" href="/scool/css/fontawesome/all.css">
 </head>
 
 <body>
 
-    @yield('header')
-    <div class="wrapper">
-        @yield('content')
-        @yield('sidebar')
-    
+@yield('header')
+<div class="wrapper">
+    @yield('content')
+    @yield('sidebar')
+</div>
 
-    </div>
-
-
-    @yield('footer')
+@yield('footer')
 </body>
 @push('scripts')
-    <script src="/js/events.js"></script>
+    <script src="./js/events.js"></script>
 @endpush
 
 @stack('scripts')

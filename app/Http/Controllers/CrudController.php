@@ -1,96 +1,118 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
- 
+
 
 class CrudController extends Controller
 {
-    public function delete(Request $request) {
-    
-        if($request->isMethod("post")) {  
+    public function delete(Request $request)
+    {
+
+        if ($request->isMethod("post")) {
+
         }
 
-        if($request->ajax()) {
 
+        if ($request->ajax()) {
             $id = $request->id_row;
-
-            $row = DB::table($table)->where("id", $id)->get();
+            $table = $request->table ? $request->table : 'articles';
+            $tableModel = $this->getTableModel($table);
+            $row = $tableModel->find($id);
             $res = $row->delete();
+
+            $message = $res ? "Delete successfull" : "Delete error";
             $response = [
-                "result"=>$res,
-                "remove"=>"adsa"
-            ]; 
-            return json_encode($response);   
+                "result" => $res,
+                "message" => $message
+            ];
+            return json_encode($response);
         }
-        
+
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
 
         $table = $request->table ? $request->table : "articles";
-
-        $res = [
-            "result"=> false
+        $res = false;
+        $message = "Update failed";
+        $response = [
+            "result" => $res,
+            "message" => $message
         ];
 
-        if($request->ajax()) {
+        if ($request->isMethod("post")) {}
 
 
-            $tableModel = getTableModel($table);
-            $tableModel = Article::find($request->id);
-            
-            $article->updated_at = time();
-            $isSave = $article->save();
-           
-            if($isSave) {
-                $res  = [
-                    "result"=> true
-                ];
+        if ($request->ajax()) {
+            $tableModel = $this->getTableModel($table)->find($request->id);
+
+            foreach ($tableModel as $name => $field) {
+                if ($request->$name) {
+                    $tableModel->$name = $request->$name;
+                }
             }
+            $tableModel->updated_at = time();
+            $isSave = $tableModel->save();
+
+            if ($isSave) {
+                $res = true;
+                $message = "Update successful";
+            }
+
+            $response = [
+                "result" => $res,
+                "message" => $message
+            ];
+            return json_encode($response);
         }
-        
-        return json_encode($res);
+
+        return json_encode($response);
     }
 
-    public function create(Request $table) {
-        
+    public function create(Request $table)
+    {
+
     }
 
-    public function read(Request $request) {
+    public function read(Request $request)
+    {
 
-        $table = $request->table ?  $request->table : 'articles';
+        $table = $request->table ? $request->table : 'articles';
         $tableModel = $this->getTableModel($table);
         $articles = $tableModel::all()->toArray();
-       
+
         return view("crud.read", [
-            "values"=>$articles,
-            "table"=>$table
-        
+            "values" => $articles,
+            "table" => $table
+
         ]);
     }
 
-    public function show(Request $request) {
- 
+    public function show(Request $request)
+    {
+
         $table = $request->table ? $request->table : "articles";
         $listRelationships = $this->getRelationshipsTable($table);
         $relationships = [];
         $tableModel = $this->getTableModel($table);
 
-        foreach($listRelationships as $value) {
+        foreach ($listRelationships as $value) {
             $relationshipsTable = substr($value, 0, -3);
             $relationshipsTableModel = $this->getTableModel($relationshipsTable);
             $columnName = self::getRelationshipsColumnName($relationshipsTable);
-            $res = $relationshipsTableModel->get(["id", $columnName ])->toArray();
-            $relationships[$value] = $res; 
+            $res = $relationshipsTableModel->get(["id", $columnName])->toArray();
+            $relationships[$value] = $res;
         }
 
         $fields = $tableModel->find($request->id_row)->toArray();
-    
+
         return view("crud.update", [
-            "fields"=> $fields,
-            "relationships"=> $relationships
+            "fields" => $fields,
+            "relationships" => $relationships
         ]);
 
     }
@@ -98,17 +120,18 @@ class CrudController extends Controller
     /**
      * getRelationshipsTable
      *
-     * @param  strint $table
+     * @param strint $table
      *
      * @return array
      */
-    private function getRelationshipsTable($table) {
+    private function getRelationshipsTable($table)
+    {
         $rows = DB::select("SHOW COLUMNS FROM $table");
-        $rows = array_map(function($value){
-            if(substr($value->Field, -3, 3) === "_id") return $value->Field;
+        $rows = array_map(function ($value) {
+            if (substr($value->Field, -3, 3) === "_id") return $value->Field;
         }, $rows);
-        $rows = array_filter($rows, function($v){
-            if($v) return true;
+        $rows = array_filter($rows, function ($v) {
+            if ($v) return true;
         });
 
         return $rows;
@@ -119,45 +142,47 @@ class CrudController extends Controller
      *
      * @return array
      */
-    private static function getRelationshipsColumnName($table){
+    private static function getRelationshipsColumnName($table)
+    {
 
         $list = [
-            "author"=>"last_name",
-            "subcategory"=>"name",
-            "category"=>"name"
+            "author" => "last_name",
+            "subcategory" => "name",
+            "category" => "name"
         ];
-        return $list[$table]; 
+        return $list[$table];
     }
 
     /**
      * getTableModel
      *
-     * @param  string $table
+     * @param string $table
      *
      * @return class
      */
-    private function getTableModel($table) {
+    private function getTableModel($table)
+    {
 
-        $table =  ucfirst(strtolower($table));
+        $table = ucfirst(strtolower($table));
         $model = "";
-        switch($table) {
-            case "Author": 
+        switch ($table) {
+            case "Author":
                 $model = new \App\Author;
-            break;
-            case "Articles": 
+                break;
+            case "Articles":
                 $model = new \App\Article;
-            break;
-            case "Categories": 
+                break;
+            case "Category":
                 $model = new \App\Category;
-            break;
-            case "Subcategory": 
+                break;
+            case "Subcategory":
                 $model = new \App\Subcategory;
-            break;
+                break;
         };
 
         return $model;
 
     }
 
-    
+
 }

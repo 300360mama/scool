@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/styles/crud/read.css">
-    <link rel="stylesheet" href="/css/fontawesome/all.css">
+    <link rel="stylesheet" href="/scool/css/styles/crud/read.css">
+    <link rel="stylesheet" href="/scool/css/fontawesome/all.css">
 </head>
 
 <body>
@@ -39,12 +39,12 @@
                 @endif 
                
                 @endforeach
-                <form method="post" action="/crud/delete/{{ $table }}"  class="cell cell_fixed_size">
+                <form method="post" action="/scool/crud/delete/{{ $table }}"  class="cell cell_fixed_size">
                     {{ csrf_field() }}
                     <input type="hidden" name="id_row" value="{{ $value['id'] }}">
                     <button type="submit" name="remove"  class="remove change">Remove</button>
                 </form>
-                 <form method="post" action="/crud/show/{{ $table }}"  class="cell cell_fixed_size">
+                 <form method="post" action="/scool/crud/show/{{ $table }}"  class="cell cell_fixed_size">
                     {{ csrf_field() }}
                     <input type="hidden" name="id_row" value="{{ $value['id'] }}">
                     <button type="submit" value="{{ $value['id'] }}" class="update change">Update</button>
@@ -54,11 +54,18 @@
 
             @endforeach
         </div>
-
+        <div class="message_wrapper">
+            <div class="message"></div>
+            <div class="close">
+                <span class="line right"></span>
+                <span class="line left"></span>
+            </div>
+        </div>
     </div>
 
     @push('scripts')
-    <script src="/js/crud/read.js"></script>
+    <script src="/scool/js/crud/read.js"></script>
+    <script src="/scool/js/crud/libs.js"></script>
     @endpush
 
     @stack('scripts') 

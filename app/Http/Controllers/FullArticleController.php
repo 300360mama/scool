@@ -16,9 +16,10 @@ class FullArticleController extends ArticleController
         }
         
         $like_articles = $this->getLikeArticle();
-        
 
-
+        dump($_SERVER['PHP_SELF']);
+        dump($_SERVER["DOCUMENT_ROOT"]);
+        dump($request->category);
         return view('full_article', [
             'article'=>$article,
             "subcategories"=>$this->getSubcategories(),

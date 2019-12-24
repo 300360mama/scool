@@ -11,6 +11,12 @@ window.addEventListener("load", function() {
             let path = form.getAttribute("action");
             let row = e.target.parentNode.parentNode;
             let data = new FormData(form);
+            let message_wrapper = document.querySelector(".message_wrapper");
+            let message = document.querySelector(".message_wrapper .message");
+            let closeBtn = document.querySelector(".message_wrapper .close");
+            closeBtn.addEventListener("click", (e)=>{
+                hide(message_wrapper);
+            });
 
             fetch(path, {
                 body: data,
@@ -22,10 +28,12 @@ window.addEventListener("load", function() {
                 method: "post"
             }).then((response) => {
                 response.json().then((res) => {
-                    if (res.result === 1) {
+                    if (res.result) {
                         row.parentNode.removeChild(row);
                     }
-                });;
+                    message.innerHTML = res.message;
+                    show(message_wrapper);
+                });
             })
         }
     })

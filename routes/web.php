@@ -1,15 +1,17 @@
 <?php
 
-Route::post("/crud/delete/{table}", "CrudController@delete");
-Route::post("/crud/show/{table}", "CrudController@show");
-Route::get("/crud/read/{table}", "CrudController@read");
-Route::post("/crud/update/{table}", "CrudController@update");
-Route::get("/crud/create/{table}", "CrudController@create");
-Route::get("/subcategory/{id}", 'SubcategoryController@index');
-Route::get("/{category}/{id}", 'FullArticleController@index');
-Route::get("/{category}", 'ListArticleController@index');
-Route::get("/", 'FullArticleController@index');
-Route::get("/404", 'NotfoundController@notFound');
+$root = $_SERVER['DOCUMENT_ROOT'];
+
+Route::post("/scool/crud/delete/{table}", "CrudController@delete");
+Route::post("/scool/crud/show/{table}", "CrudController@show");
+Route::get("/scool/crud/read/{table}", "CrudController@read");
+Route::post("/scool/crud/update/{table}", "CrudController@update");
+Route::get("/scool/crud/create/{table}", "CrudController@create");
+Route::get("/scool/subcategory/{id}", 'SubcategoryController@index');
+Route::get("/scool/{category}/{id}", 'FullArticleController@index');
+Route::get("/scool/{category}", 'ListArticleController@index');
+Route::get("/scool", 'FullArticleController@index');
+Route::get("/scool/404", 'NotfoundController@notFound');
 
 
 
