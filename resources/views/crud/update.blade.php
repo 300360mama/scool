@@ -60,6 +60,15 @@
            </form>
         </div>
 
+
+        <div class="message_wrapper">
+            <div class="message"></div>
+            <div class="close">
+                <span class="line right"></span>
+                <span class="line left"></span>
+            </div>
+        </div>
+
     </div>
 
     @push('scripts')

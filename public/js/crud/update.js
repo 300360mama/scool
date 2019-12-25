@@ -1,11 +1,16 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
     let update = document.getElementById("update");
     let form = document.getElementById("updateForm");
     let path = form.getAttribute("action");
-    let message = document.querySelector(".update_wrapper .message");
+    let closeBtn = document.querySelector(".message_wrapper .close");
+    let message_wrapper = document.querySelector(".message_wrapper");
+    let message = document.querySelector(".message_wrapper .message");
+    closeBtn.addEventListener("click", (e) => {
+        hide(message_wrapper);
+    });
 
-    update.addEventListener("click", function(e) {
+    update.addEventListener("click", function (e) {
 
         e.preventDefault();
         let token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
@@ -21,21 +26,11 @@ window.addEventListener("load", function() {
             method: "post"
         }).then((response) => {
             response.json().then((res) => {
-                addMessage(res.result);
-            });;
+                addMessage(message, res.message);
+                show(message_wrapper);
+            });
         })
     })
 });
 
 
-function addMessage(result) {
-    let elem = document.querySelector(".update_wrapper .message");
-    let message = "Оновлення успішне";
-    if (result) {
-        elem.classList.add("green");
-    } else {
-        message = "Оновлення не вдалося!!!";
-        elem.classList.add("red");
-    }
-    elem.innerHTML = message;
-}

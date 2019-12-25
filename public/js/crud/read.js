@@ -31,7 +31,7 @@ window.addEventListener("load", function() {
                     if (res.result) {
                         row.parentNode.removeChild(row);
                     }
-                    message.innerHTML = res.message;
+                    addMessage(message, res.message);
                     show(message_wrapper);
                 });
             })
