@@ -110,10 +110,10 @@ class CrudController extends Controller
 
         $table = $request->table ? $request->table : 'articles';
         $tableModel = $this->getTableModel($table);
-        $articles = $tableModel::all()->toArray();
+        $fields = $tableModel::all()->toArray();
 
         return view("crud.read", [
-            "values" => $articles,
+            "values" => $fields,
             "table" => $table
 
         ]);
@@ -123,6 +123,8 @@ class CrudController extends Controller
     {
 
         $table = $request->table ? $request->table : "articles";
+
+        dump($table);
         $listRelationships = $this->getRelationshipsTable($table);
         $relationships = [];
         $tableModel = $this->getTableModel($table);
@@ -224,10 +226,10 @@ class CrudController extends Controller
             case "Articles":
                 $model = new \App\Article;
                 break;
-            case "Category":
+            case "Categories":
                 $model = new \App\Category;
                 break;
-            case "Subcategory":
+            case "Subcategories":
                 $model = new \App\Subcategory;
                 break;
         };
