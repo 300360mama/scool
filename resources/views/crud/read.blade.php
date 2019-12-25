@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <link rel="stylesheet" href="/scool/css/styles/crud/read.css">
+    <link rel="stylesheet" href="/scool/css/styles/crud/common.css">
     <link rel="stylesheet" href="/scool/css/fontawesome/all.css">
 </head>
 

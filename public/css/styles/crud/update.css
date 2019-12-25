@@ -1,4 +1,6 @@
-
+.update_wrapper {
+    width: 100%;
+}
 .update_form {
     display: flex;
     flex-direction: column;

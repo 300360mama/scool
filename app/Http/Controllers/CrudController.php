@@ -10,13 +10,7 @@ class CrudController extends Controller
 {
     public function delete(Request $request)
     {
-
-        if ($request->isMethod("post")) {
-
-        }
-
-
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->isMethod("post")) {
             $id = $request->id_row;
             $table = $request->table ? $request->table : 'articles';
             $tableModel = $this->getTableModel($table);
@@ -43,18 +37,19 @@ class CrudController extends Controller
             "result" => $res,
             "message" => $message
         ];
+        $tableModel = $this->getTableModel($table)->find($request->id);
+        $message = "Update error";
+        $fields = $request->all();
+        $res = false;
 
-        if ($request->isMethod("post")) {}
-
-
-        if ($request->ajax()) {
-            $tableModel = $this->getTableModel($table)->find($request->id);
-
-            foreach ($tableModel as $name => $field) {
-                if ($request->$name) {
-                    $tableModel->$name = $request->$name;
+        if ($request->ajax() || $request->isMethod("post")) {
+            foreach ($fields as $name => $field) {
+                dump($name);
+                if($tableModel->$name) {
+                    $tableModel->$name = $field;
                 }
             }
+
             $tableModel->updated_at = time();
             $isSave = $tableModel->save();
 
