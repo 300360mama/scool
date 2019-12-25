@@ -44,8 +44,7 @@ class CrudController extends Controller
 
         if ($request->ajax() || $request->isMethod("post")) {
             foreach ($fields as $name => $field) {
-                dump($name);
-                if($tableModel->$name) {
+                if ($tableModel->$name) {
                     $tableModel->$name = $field;
                 }
             }
@@ -68,8 +67,41 @@ class CrudController extends Controller
         return json_encode($response);
     }
 
-    public function create(Request $table)
+    public function create(Request $request)
     {
+
+        if ($request->ajax() || $request->isMethod("post")) {
+            $table = $request->table ? $request->table : "articles";
+            $columns = $this->getColumnName($table);
+            $tableModel = $this->getTableModel($table);
+            $fields = $request->all();
+            $res = false;
+            $message = "Create failed";
+
+            foreach ($fields as $name => $field) {
+                if (!in_array($name, $columns)) continue;
+                $tableModel->$name = $request->$name;
+            }
+
+            $tableModel->created_at = time();
+            $tableModel->updated_at = time();
+
+            $isSave = $tableModel->save();
+
+            if ($isSave) {
+                $res = true;
+                $message = "Create successful";
+            }
+
+            $response = [
+                "result" => $res,
+                "message" => $message
+            ];
+
+            return json_encode($response);
+
+        }
+
 
     }
 
@@ -110,6 +142,31 @@ class CrudController extends Controller
             "relationships" => $relationships
         ]);
 
+    }
+
+    public function createView(Request $request)
+    {
+        $table = $request->table ? $request->table : "articles";
+        $fields = $this->getColumnName($table);
+        $listRelationships = $this->getRelationshipsTable($table);
+        $relationships = [];
+
+        foreach ($listRelationships as $value) {
+            $relationshipsTable = substr($value, 0, -3);
+            $relationshipsTableModel = $this->getTableModel($relationshipsTable);
+            $columnName = self::getRelationshipsColumnName($relationshipsTable);
+            $res = $relationshipsTableModel->get(["id", $columnName])->toArray();
+            $relationships[$value] = $res;
+        }
+
+        dump($relationships);
+        dump($fields);
+
+        return view("crud.create", [
+            "table" => $table,
+            "fields" => $fields,
+            "relationships" => $relationships
+        ]);
     }
 
     /**
@@ -177,6 +234,11 @@ class CrudController extends Controller
 
         return $model;
 
+    }
+
+    private function getColumnName($table)
+    {
+        return DB::getSchemaBuilder()->getColumnListing($table);
     }
 
 

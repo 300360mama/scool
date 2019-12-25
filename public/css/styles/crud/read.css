@@ -1,4 +1,7 @@
-
+.new_row {
+    align-self: flex-start;
+    padding: 5px;
+}
 
 .title {
     text-align: center;
