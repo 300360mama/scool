@@ -3,6 +3,7 @@
 @import "./styles/blocks/footer.css";
 @import "./styles/blocks/latest_post.css";
 @import "./styles/blocks/sidebar.css";
+@import "./styles/adaptive/adaptive.css";
 * {
     margin: 0;
     padding: 0;
@@ -46,10 +47,6 @@ header {
 .navigation .menu a {
     font-size: 1em;
     color: #000000;
-}
-
-.navigation .menu {
-    padding: 25px 10px;
 }
 
 .logo_text {
