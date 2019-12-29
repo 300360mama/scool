@@ -20,7 +20,7 @@ main {
 }
 
 .article_category {
-    font: normal 14px OpenSans;
+    font: normal 1rem OpenSans;
     color: #060606;
 }
 
@@ -66,7 +66,7 @@ article .article_logo {
 
 article .article_text {
     text-align: justify;
-    font-size: 14px;
+    font-size: 1rem;
     color: #5c5c5b;
     padding: 10px 10px;
 }

@@ -19,7 +19,7 @@ aside .aside_title {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 400;
     color: #ffffff;
     background-color: #2d2d2d;
@@ -60,7 +60,7 @@ aside .pinterest_imgs img {
 }
 
 aside .follow_us .aside_social {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 0 5px;
 }
 
@@ -102,12 +102,12 @@ aside .latest_post {
 }
 
 .latest_post_block .post_id .post_id_text {
-    font-size: 13px;
+    font-size: 0.75rem;
     color: #282828;
 }
 
 .latest_post_block .post_id .post_id_date {
-    font: normal 11px 'OpenSans';
+    font: normal 0.75rem 'OpenSans';
     color: #646464;
 }
 
@@ -132,7 +132,7 @@ aside .latest_post {
 }
 
 .categories .open_block {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #7e7a7a;
     margin: 5px 0;
     cursor: pointer;
@@ -141,7 +141,7 @@ aside .latest_post {
 .categories_list .category {
     position: relative;
     width: 100%;
-    font-size: 13px;
+    font-size: 0.75rem;
     padding: 10px 5px;
     box-sizing: border-box;
     text-align: center;

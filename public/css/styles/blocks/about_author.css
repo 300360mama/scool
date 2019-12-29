@@ -1,7 +1,7 @@
 /* About author*/
 
 .author_block {
-    width: 100;
+    width: 100px;
     display: flex;
     justify-content: space-between;
     margin: 10px 0 15px 0;
@@ -16,17 +16,17 @@
 .author_block .author_info_block {
     display: flex;
     flex-direction: column;
-    font: normal 14px OpenSans;
+    font: normal 0.875rem OpenSans;
     justify-content: center;
 }
 
 .author_block .author_info_block .author_name {
-    font: normal 21px OpenSans;
+    font: normal 1.375rem OpenSans;
     color: #282828;
 }
 
 .author_block .author_about {
-    font: normal 14px OpenSans;
+    font: normal 0.75rem OpenSans;
     color: #282828;
     margin: 10px 0;
 }

@@ -19,7 +19,9 @@
 
     .navigation ul li.menu {
         padding: 10px 5px 0 5px;
-        font-size: 14px;
+    }
+    .navigation .menu a {
+        font-size: 1em;
     }
     
 }
