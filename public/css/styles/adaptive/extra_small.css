@@ -1,0 +1,27 @@
+@media (max-width: 540px) {
+    html{
+        font-size: 30px;
+    }
+
+    header, .wrapper, footer {
+        width: 100%;
+    }
+
+    header .navigation {
+        position: absolute;
+        left: 0;
+    }
+
+    header .navigation ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navigation ul li.menu {
+        padding: 10px 5px 0 5px;
+    }
+    .navigation .menu a {
+        font-size: 1em;
+    }
+
+}
