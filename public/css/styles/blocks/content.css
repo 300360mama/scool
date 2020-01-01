@@ -3,7 +3,7 @@
 .wrapper {
     display: flex;
     justify-content: space-between;
-    /* width: 1360px; */
+    width: 1360px;
     padding: 0 10px;
 }
 

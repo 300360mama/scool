@@ -3,7 +3,6 @@
 @import "./styles/blocks/footer.css";
 @import "./styles/blocks/latest_post.css";
 @import "./styles/blocks/sidebar.css";
-@import "./styles/adaptive/adaptive.css";
 * {
     margin: 0;
     padding: 0;
@@ -43,27 +42,9 @@ header {
     padding: 0 0 40px 0;
 }
 
-.navigation ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.navigation .menu a {
-    font-size: 1rem;
-    color: #000000;
-}
-
-.logo_text {
-    font: normal 4.5rem RobotoMono;
-    color: #000000;
-    padding: 25px 45px;
-    border: 2px dashed #000000;
-}
-
-
 /* About author*/
 
+/*
 .author_block {
     width: 100px;
     display: flex;
@@ -96,7 +77,7 @@ header {
 }
 
 
-/* Like article block */
+!* Like article block *!
 
 .like_article_block {
     width: 100%;
@@ -145,7 +126,7 @@ header {
 }
 
 
-/* Comments */
+!* Comments *!
 
 .comments {
     display: flex;
@@ -204,7 +185,7 @@ header {
 }
 
 
-/* Not Found */
+!* Not Found *!
 
 .not_found {
     display: flex;
@@ -245,7 +226,7 @@ header {
 }
 
 
-/*Footer*/
+!*Footer*!
 
 footer {
     display: flex;
@@ -273,3 +254,4 @@ footer .opacity_wrapper {
     width: 50%;
     height: 320px;
 }
+*/

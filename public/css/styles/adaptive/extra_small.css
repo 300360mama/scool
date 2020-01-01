@@ -7,9 +7,19 @@
         width: 100%;
     }
 
+    header {
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    header .logo_text {
+        
+    }
+
     header .navigation {
-        position: absolute;
+        position: fixed;
         left: 0;
+        display: none;
     }
 
     header .navigation ul {

@@ -11,7 +11,7 @@ footer {
 
 header {
     color: #000000;
-    font: normal 0.875em Lato;
+    font: normal 0.875rem Lato;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -26,7 +26,7 @@ header {
 }
 
 .navigation .menu a {
-    font-size: 1em;
+    font-size: 1rem;
     color: #000000;
 }
 
@@ -35,7 +35,7 @@ header {
 }
 
 .logo_text {
-    font: normal 4.5em RobotoMono;
+    font: normal 4.5rem RobotoMono;
     color: #000000;
     padding: 25px 45px;
     border: 2px dashed #000000;
