@@ -41,6 +41,7 @@
         padding: 10px;
         width: 30vw;
         min-width: 140px;
+        /* overflow: auto; */
     }
 
 
@@ -56,10 +57,17 @@
         flex-direction: column;
         align-items: flex-start;
         margin-top: 0.4rem;
+        overflow-y: auto;
     }
 
     .navigation ul li.menu {
-        padding: 10px 5px 0 5px;
+        padding: 5px 0;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        margin: 3px 0;
+        border-bottom-right-radius: 5px;
     }
 
     .navigation .menu a {

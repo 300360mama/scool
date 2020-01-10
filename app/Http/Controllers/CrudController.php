@@ -124,7 +124,6 @@ class CrudController extends Controller
 
         $table = $request->table ? $request->table : "articles";
 
-        dump($table);
         $listRelationships = $this->getRelationshipsTable($table);
         $relationships = [];
         $tableModel = $this->getTableModel($table);
@@ -136,6 +135,7 @@ class CrudController extends Controller
             $res = $relationshipsTableModel->get(["id", $columnName])->toArray();
             $relationships[$value] = $res;
         }
+
 
         $fields = $tableModel->find($request->id_row)->toArray();
 
@@ -161,8 +161,6 @@ class CrudController extends Controller
             $relationships[$value] = $res;
         }
 
-        dump($relationships);
-        dump($fields);
 
         return view("crud.create", [
             "table" => $table,
@@ -201,8 +199,8 @@ class CrudController extends Controller
 
         $list = [
             "author" => "last_name",
-            "subcategory" => "name",
-            "category" => "name"
+            "subcategories" => "name",
+            "categories" => "name"
         ];
         return $list[$table];
     }
@@ -219,6 +217,7 @@ class CrudController extends Controller
 
         $table = ucfirst(strtolower($table));
         $model = "";
+
         switch ($table) {
             case "Author":
                 $model = new \App\Author;
