@@ -1,7 +1,8 @@
 @section('sidebar')
-<aside>  
+<aside id="sidebar">
 
-     <section class="aside_section categories">
+    <i class="fas fa-list-ul"></i>
+    <section class="aside_section categories">
         <span class="aside_title">Шкільні предмети</span>
         <div id="categoriesList" class="categories_list">
             @foreach ($subcategories as $subcategory)

@@ -22,7 +22,7 @@
 @yield('footer')
 </body>
 @push('scripts')
-    <script src="./js/events.js"></script>
+    <script src="/scool/js/events.js"></script>
 @endpush
 
 @stack('scripts')

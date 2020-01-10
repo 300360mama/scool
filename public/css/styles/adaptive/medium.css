@@ -1,6 +1,45 @@
 @media (max-width: 960px) {
     html{
-        font-size: 30px;
+        font-size: 18px;
+    }
+
+    header, .wrapper, footer {
+        width: 100%;
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+
+    header {
+        justify-content: center;
+        flex-direction: row;
+    }
+
+
+
+    header .logo_text {
+        padding: 5px;
+    }
+
+    header .navigation {
+        position: fixed;
+        left: 0;
+    }
+
+    header .navigation ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navigation ul li.menu {
+        padding: 10px 5px 0 5px;
+    }
+
+    aside {
+        position: absolute;
+    }
+
+    .wrapper main {
+        width: 100%;
     }
 
 }

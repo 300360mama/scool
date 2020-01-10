@@ -23,7 +23,7 @@ ul li {
 header,
 .wrapper,
 footer {
-    min-width: 1200px;
+     min-width: 1200px;
     margin: 0 auto;
     font-size: 1rem;
     width: 1160px;
@@ -43,8 +43,8 @@ header {
 }
 
 /* About author*/
-
 /*
+
 .author_block {
     width: 100px;
     display: flex;

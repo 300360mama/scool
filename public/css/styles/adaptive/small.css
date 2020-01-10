@@ -1,27 +1,114 @@
 @media (max-width: 768px) {
-    html{
-        font-size: 30px;
+    html {
+        /* font-size: 18px; */
     }
 
     header, .wrapper, footer {
         width: 100%;
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+
+    header {
+        justify-content: center;
+        flex-direction: row;
+
+    }
+
+    header .fa-bars {
+        display: block;
+        position: absolute;
+        right: -1.5rem;
+        top: 5px;
+        color: #4c2121;
+        font-size: 1.5rem;
+        text-shadow: 1px 1px #fff;
+    }
+
+    header .logo_text {
+        padding: 5px;
+        font-size: 2.3rem;
     }
 
     header .navigation {
-        position: absolute;
-        left: 0;
+        position: fixed;
+        right: 0;
+        transform: translateX(-100%);
+        top: 0;
+        background: #4c2121;
+        height: 100vh;
+        z-index: 10;
+        padding: 10px;
+        width: 30vw;
+        min-width: 140px;
+    }
+
+
+    header .navigation.open {
+        animation: show_menu 1s forwards;
+    }
+
+    header .navigation.hide {
+        animation: hide_menu 1s forwards;
     }
 
     header .navigation ul {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 0.4rem;
     }
 
     .navigation ul li.menu {
         padding: 10px 5px 0 5px;
     }
+
     .navigation .menu a {
-        font-size: 1em;
+        color: #ffffffe6;
+    }
+
+    aside {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #4c2121;
+        width: 30vw;
+        min-width: 140px;
+        padding: 5px;
+        z-index: 10;
+        transform: translateX(100%);
+    }
+    #sidebar.open {
+         animation: show_list 1s forwards;
+    }
+
+    #sidebar.hide {
+        animation: hide_list 1s forwards;
+    }
+
+    aside .categories {
+        width: 100%;
+    }
+
+    aside .fa-list-ul {
+        display: block;
+        position: absolute;
+        font-size: 1.5rem;
+        color: #4c2121;
+        text-shadow: 1px 1px #ffffff;
+        left: -1.6rem;
+        top: 0;
+    }
+
+    aside .categories .category {
+        color: #FFFFFF;
+    }
+
+    aside .latest_post {
+        display: none;
+    }
+
+    .wrapper main {
+        width: 100%;
     }
 
 }

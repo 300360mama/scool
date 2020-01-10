@@ -1,12 +1,3 @@
-header,
-.wrapper,
-footer {
-    min-width: 1160px;
-    margin: 0 auto;
-    font-size: 1rem;
-}
-
-
 /*Header */
 
 header {
@@ -17,6 +8,10 @@ header {
     justify-content: flex-start;
     flex-direction: column;
     padding: 0 0 40px 0;
+}
+
+header .fa-bars {
+    display: none;
 }
 
 .navigation ul {
@@ -39,4 +34,24 @@ header {
     color: #000000;
     padding: 25px 45px;
     border: 2px dashed #000000;
+}
+
+@keyframes show_menu {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes hide_menu {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }

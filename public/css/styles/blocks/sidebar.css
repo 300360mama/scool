@@ -150,3 +150,28 @@ aside .latest_post {
     margin: 3px 0;
     border-bottom-right-radius: 5px;
 }
+
+aside .fa-list-ul {
+    display: none;
+}
+
+
+@keyframes show_list {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes hide_list {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}

@@ -19,7 +19,7 @@
                 {{ $article->content_article }}
             </span>
 
-            <a href="./{{ $article->category->name }}/{{ $article->id }}" class="continue_read">Продовжити читання
+            <a href="/scool/{{ $article->category->name }}/{{ $article->id }}" class="continue_read">Продовжити читання
                 <span class="fa fa-arrow-right"></span>
             </a>
         </article>

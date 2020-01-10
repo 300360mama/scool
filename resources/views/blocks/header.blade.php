@@ -1,6 +1,8 @@
 @section('header')
-<header>
+    <header>
+
         <nav class="navigation">
+            <i class="fas fa-bars"></i>
             <ul>
                 <li class="menu"><a href="scool/">Головна</a></li>
                 <li class="menu"><a href="/scool/items">Предмети</a></li>
