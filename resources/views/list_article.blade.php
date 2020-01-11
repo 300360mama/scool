@@ -26,6 +26,9 @@
     @endforeach
 
 
+        {{ $articles->links() }}
+
+
     @yield('like_article')
 
 </main>

@@ -11,7 +11,7 @@ class SubcategoryController extends ArticleController
 
         $subcategory_id = $request->id ? $request->id : 1;
 
-        $articles = Article::where('subcategory_id', $subcategory_id)->orderBy("created_at","desc'")->get();
+        $articles = Article::where('subcategory_id', $subcategory_id)->orderBy("created_at","desc'")->paginate(10);
         $articles = $articles ? $articles : [];
 
         $like_articles = $this->getLikeArticle();

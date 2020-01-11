@@ -14,7 +14,7 @@ class ListArticleController extends ArticleController {
         $category_name = $request->category ? $request->category : "items";
         $category_id = $this->getCategoryId($category_name);
 
-        $articles = Article::where('category_id', $category_id)->get();
+        $articles = Article::where('category_id', $category_id)->paginate(10);
         $articles = $articles ? $articles : [];
 
         $like_articles = $this->getLikeArticle();

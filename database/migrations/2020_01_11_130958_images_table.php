@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
+class ImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content_article');
-            $table->string('title_article', 255);
-            $table->integer('categories_id');
-            $table->integer('author_id');
-            $table->integer('subcategories_id')->nullable();
-            $table->integer('images_id')->nullable();
+            $table->string('path_to_image', 255);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
@@ -34,6 +29,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('images');
     }
 }

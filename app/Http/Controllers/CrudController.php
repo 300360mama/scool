@@ -110,7 +110,11 @@ class CrudController extends Controller
 
         $table = $request->table ? $request->table : 'articles';
         $tableModel = $this->getTableModel($table);
+
+        dump($tableModel);
         $fields = $tableModel::all()->toArray();
+
+        dump($fields);
 
         return view("crud.read", [
             "values" => $fields,
@@ -199,8 +203,9 @@ class CrudController extends Controller
 
         $list = [
             "author" => "last_name",
-            "subcategories" => "name",
-            "categories" => "name"
+            "subcategory" => "name",
+            "category" => "name",
+            "image" => "path_to_image",
         ];
         return $list[$table];
     }
@@ -225,11 +230,14 @@ class CrudController extends Controller
             case "Articles":
                 $model = new \App\Article;
                 break;
-            case "Categories":
+            case "Category":
                 $model = new \App\Category;
                 break;
-            case "Subcategories":
+            case "Subcategory":
                 $model = new \App\Subcategory;
+                break;
+            case "Images":
+                $model = new \App\Image;
                 break;
         };
 

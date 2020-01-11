@@ -17,45 +17,49 @@
     <h2 class="title">CRUD panel</h2>
 
     <a href="/scool/crud/createView/{{ $table }}" class="new_row">Add new row</a>
-    <div id="readWrapper" class="read_wrapper">
 
-        <section class="row">
-            @foreach ($values[0] as $title=>$value)
-                @if($title === 'id' || $title === 'created_at' || $title === 'updated_at')
-                    <div class="cell cell_fixed_size">{{ $title }}</div>
-                @else
-                    <div class="cell">{{ $title }}</div>
-                @endif
-
-            @endforeach
-        </section>
-        @foreach($values as $value)
+    @if(count($values)>0)
+        <div id="readWrapper" class="read_wrapper">
 
             <section class="row">
-                @foreach($value as $title=>$field)
-
+                @foreach ($values[0] as $title=>$value)
                     @if($title === 'id' || $title === 'created_at' || $title === 'updated_at')
-                        <div class="cell cell_fixed_size">{{ $field }}</div>
+                        <div class="cell cell_fixed_size">{{ $title }}</div>
                     @else
-                        <div class="cell">{{ $field }}</div>
+                        <div class="cell">{{ $title }}</div>
                     @endif
 
                 @endforeach
-                <form method="post" action="/scool/crud/delete/{{ $table }}" class="cell cell_fixed_size">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="id_row" value="{{ $value['id'] }}">
-                    <button type="submit" name="remove" class="remove change">Remove</button>
-                </form>
-                <form method="post" action="/scool/crud/show/{{ $table }}" class="cell cell_fixed_size">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="id_row" value="{{ $value['id'] }}">
-                    <button type="submit" value="{{ $value['id'] }}" class="update change">Update</button>
-                </form>
-
             </section>
+            @foreach($values as $value)
 
-        @endforeach
-    </div>
+                <section class="row">
+                    @foreach($value as $title=>$field)
+
+                        @if($title === 'id' || $title === 'created_at' || $title === 'updated_at')
+                            <div class="cell cell_fixed_size">{{ $field }}</div>
+                        @else
+                            <div class="cell">{{ $field }}</div>
+                        @endif
+
+                    @endforeach
+                    <form method="post" action="/scool/crud/delete/{{ $table }}" class="cell cell_fixed_size">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id_row" value="{{ $value['id'] }}">
+                        <button type="submit" name="remove" class="remove change">Remove</button>
+                    </form>
+                    <form method="post" action="/scool/crud/show/{{ $table }}" class="cell cell_fixed_size">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id_row" value="{{ $value['id'] }}">
+                        <button type="submit" value="{{ $value['id'] }}" class="update change">Update</button>
+                    </form>
+
+                </section>
+
+            @endforeach
+        </div>
+    @endif
+
     <div class="message_wrapper">
         <div class="message"></div>
         <div class="close">

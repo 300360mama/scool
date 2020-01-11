@@ -11,7 +11,7 @@ Route::post("/scool/crud/create/{table}", "CrudController@create");
 Route::get("/scool/subcategory/{id}", 'SubcategoryController@index');
 Route::get("/scool/{category}/{id}", 'FullArticleController@index');
 Route::get("/scool/{category}", 'ListArticleController@index');
-Route::get("/scool", 'FullArticleController@index');
+Route::get("/scool", 'ListArticleController@index');
 Route::get("/scool/404", 'NotfoundController@notFound');
 
 

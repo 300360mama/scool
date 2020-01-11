@@ -24,4 +24,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\Author');
     }
+
+    public function image()
+    {
+        return $this->belongsTo('App\Image');
+    }
 }
