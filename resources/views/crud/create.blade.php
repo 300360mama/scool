@@ -34,17 +34,20 @@
                                 @endforeach
                             @endforeach
                         </select>
+                    @elseif($field === "path_to_image")
+                        <button id="selectImage" formaction="/scool/crud/getImages"> Select image </button>
                     @else
                         <span class="field_title">{{ $field }}</span>
                         <textarea name="{{ $field }}" class="row" type="text" rows="5">{{ $field }}</textarea>
                     @endif
-
                 </fieldset>
             @endforeach
-
             <input type="submit" name="create" id="create">
         </form>
     </div>
+
+    @include('crud.select_image')
+    @yield('select_image')
     <div class="message_wrapper">
         <div class="message"></div>
         <div class="close">

@@ -9,11 +9,11 @@ window.addEventListener("load", function () {
     closeBtn.addEventListener("click", (e) => {
         hide(message_wrapper);
     });
+    let token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
     create.addEventListener("click", function (e) {
 
         e.preventDefault();
-        let token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
         let data = new FormData(form);
 
         fetch(path, {
@@ -30,6 +30,30 @@ window.addEventListener("load", function () {
                 show(message_wrapper);
             });
         })
+    })
+
+
+
+    let selectImage = document.getElementById("selectImage");
+
+    selectImage.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        let path_to_images = "/scool/crud/getImages"
+        fetch(path_to_images, {
+            body: {},
+            headers: {
+                'X-CSRF-TOKEN': token,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: "same-origin",
+            method: "post"
+        }).then((response) => {
+            response.json().then((res) => {
+               console.log(res);
+            });
+        })
+
     })
 });
 

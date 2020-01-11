@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CrudController extends Controller
 {
+
+    private $articles_imgs_dir = "./image/articles/";
+    private $images_extensiion = [
+        "jpg",
+        "png"
+    ];
     public function delete(Request $request)
     {
         if ($request->ajax() || $request->isMethod("post")) {
@@ -140,7 +146,6 @@ class CrudController extends Controller
             $relationships[$value] = $res;
         }
 
-
         $fields = $tableModel->find($request->id_row)->toArray();
 
         return view("crud.update", [
@@ -248,6 +253,30 @@ class CrudController extends Controller
     private function getColumnName($table)
     {
         return DB::getSchemaBuilder()->getColumnListing($table);
+    }
+
+
+
+    public function getImages() {
+
+        $images = [];
+
+        if(is_dir($this->articles_imgs_dir)) {
+            $files = scandir($this->articles_imgs_dir);
+            foreach ($files as $file) {
+                $full_path = $this->articles_imgs_dir.$file;
+                if (is_file($full_path)) {
+                    $finfo = new \SplFileInfo($full_path);
+                    $ext = $finfo->getExtension();
+                    if(in_array($ext, $this->images_extensiion)) {
+                        $images[] = $full_path;
+                    }
+                }
+            }
+        }
+
+        return json_encode($images);
+
     }
 
 

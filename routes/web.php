@@ -7,6 +7,7 @@ Route::post("/scool/crud/show/{table}", "CrudController@show");
 Route::get("/scool/crud/read/{table}", "CrudController@read");
 Route::post("/scool/crud/update/{table}", "CrudController@update");
 Route::get("/scool/crud/createView/{table}", "CrudController@createView");
+Route::post("/scool/crud/getImages/", "CrudController@getImages");
 Route::post("/scool/crud/create/{table}", "CrudController@create");
 Route::get("/scool/subcategory/{id}", 'SubcategoryController@index');
 Route::get("/scool/{category}/{id}", 'FullArticleController@index');
