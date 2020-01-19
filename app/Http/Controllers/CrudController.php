@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use DBFacade;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class CrudController extends Controller
 {
@@ -12,7 +12,7 @@ class CrudController extends Controller
     private $articles_imgs_dir = "./image/articles/";
     private $images_extensiion = [
         "jpg",
-        "png"
+        "png",
     ];
     public function delete(Request $request)
     {
@@ -26,11 +26,10 @@ class CrudController extends Controller
             $message = $res ? "Delete successfull" : "Delete error";
             $response = [
                 "result" => $res,
-                "message" => $message
+                "message" => $message,
             ];
             return json_encode($response);
         }
-
     }
 
     public function update(Request $request)
@@ -41,7 +40,7 @@ class CrudController extends Controller
         $message = "Update failed";
         $response = [
             "result" => $res,
-            "message" => $message
+            "message" => $message,
         ];
         $tableModel = $this->getTableModel($table)->find($request->id);
         $message = "Update error";
@@ -65,7 +64,7 @@ class CrudController extends Controller
 
             $response = [
                 "result" => $res,
-                "message" => $message
+                "message" => $message,
             ];
             return json_encode($response);
         }
@@ -85,7 +84,10 @@ class CrudController extends Controller
             $message = "Create failed";
 
             foreach ($fields as $name => $field) {
-                if (!in_array($name, $columns)) continue;
+                if (!in_array($name, $columns)) {
+                    continue;
+                }
+
                 $tableModel->$name = $request->$name;
             }
 
@@ -101,30 +103,25 @@ class CrudController extends Controller
 
             $response = [
                 "result" => $res,
-                "message" => $message
+                "message" => $message,
             ];
 
             return json_encode($response);
-
         }
-
-
     }
 
     public function read(Request $request)
     {
 
+        DBFacade::test();
         $table = $request->table ? $request->table : 'articles';
         $tableModel = $this->getTableModel($table);
 
-        dump($tableModel);
         $fields = $tableModel::all()->toArray();
-
-        dump($fields);
 
         return view("crud.read", [
             "values" => $fields,
-            "table" => $table
+            "table" => $table,
 
         ]);
     }
@@ -150,9 +147,8 @@ class CrudController extends Controller
 
         return view("crud.update", [
             "fields" => $fields,
-            "relationships" => $relationships
+            "relationships" => $relationships,
         ]);
-
     }
 
     public function createView(Request $request)
@@ -170,11 +166,10 @@ class CrudController extends Controller
             $relationships[$value] = $res;
         }
 
-
         return view("crud.create", [
             "table" => $table,
             "fields" => $fields,
-            "relationships" => $relationships
+            "relationships" => $relationships,
         ]);
     }
 
@@ -189,10 +184,16 @@ class CrudController extends Controller
     {
         $rows = DB::select("SHOW COLUMNS FROM $table");
         $rows = array_map(function ($value) {
-            if (substr($value->Field, -3, 3) === "_id") return $value->Field;
+            if (substr($value->Field, -3, 3) === "_id") {
+                return $value->Field;
+            }
+
         }, $rows);
         $rows = array_filter($rows, function ($v) {
-            if ($v) return true;
+            if ($v) {
+                return true;
+            }
+
         });
 
         return $rows;
@@ -247,7 +248,6 @@ class CrudController extends Controller
         };
 
         return $model;
-
     }
 
     private function getColumnName($table)
@@ -255,29 +255,7 @@ class CrudController extends Controller
         return DB::getSchemaBuilder()->getColumnListing($table);
     }
 
-
-
-    public function getImages() {
-
-        $images = [];
-
-        if(is_dir($this->articles_imgs_dir)) {
-            $files = scandir($this->articles_imgs_dir);
-            foreach ($files as $file) {
-                $full_path = $this->articles_imgs_dir.$file;
-                if (is_file($full_path)) {
-                    $finfo = new \SplFileInfo($full_path);
-                    $ext = $finfo->getExtension();
-                    if(in_array($ext, $this->images_extensiion)) {
-                        $images[] = $full_path;
-                    }
-                }
-            }
-        }
-
-        return json_encode($images);
-
+    public function loadImages()
+    {
     }
-
-
 }
