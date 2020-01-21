@@ -226,7 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'DBFacade' => App\Helpers\Facades\DBFacade::class,
+        'InfoDB' => App\Helpers\Facades\DBFacade::class,
 
     ],
 

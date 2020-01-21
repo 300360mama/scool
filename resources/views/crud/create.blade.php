@@ -19,7 +19,7 @@
         <a href="{{ url()->previous() }}">Попередня</a>
         <div id="readWrapper" class="update_wrapper">
             <div class="message"></div>
-            <form class="update_form" id="createForm" action="/scool/crud/create/{{$table}}" method="post">
+            <form  enctype="multipart/form-data" class="update_form" id="createForm" action="/scool/crud/create/{{$table}}" method="post">
                 {{ csrf_field() }}
                 @foreach($fields as $field)
                 @continue($field === "created_at" || $field === "updated_at" || $field === "id")
