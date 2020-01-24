@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\COntrollers\UploadImageController as UploadImg;
 use Illuminate\Http\Request;
 use InfoDB;
 
@@ -90,8 +89,6 @@ class CrudController extends Controller
                 }
 
                 if ($name === "image") {
-                    $uploadImg = new UploadImg();
-                    $uploadImg->upload($request);
                 }
                 $tableModel->$name = $request->$name;
             }

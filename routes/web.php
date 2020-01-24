@@ -2,6 +2,8 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
+Route::get('/scool/vue', 'VueController@index');
+
 
 Route::get("/scool/subcategory/{id}", 'SubcategoryController@index');
 Route::get("/scool/{category}/{id}", 'FullArticleController@index');
@@ -21,3 +23,5 @@ Route::post("/scool/crud/create/{table}", "CrudController@create");
 Route::get("/scool/crud/read/image", "UploadImageController@read");
 Route::get("/scool/crud/upload/image", "UploadImageController@upload");
 Route::get("/scool/crud/remove/image", "UploadImageController@delete");
+
+
