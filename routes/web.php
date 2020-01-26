@@ -1,6 +1,6 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 
 
 Route::get("/scool/subcategory/{id}", 'SubcategoryController@index');
