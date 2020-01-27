@@ -3,25 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 
-class VueController extends Controller
+class VueController extends ArticleController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $articles = Article::all();
-        $articles = $articles->toArray();
+        $category_name = $request->category ? $request->category : "items";
+        $category_id = $this->getCategoryId($category_name);
 
-        dump($articles);
+        $articles = Article::where('category_id', $category_id)->paginate(10);
+        $articles = $articles ? $articles : [];
 
-        return response()->json([
+        $like_articles = $this->getLikeArticle();
+        return view('list_article', [
             'articles' => $articles,
+            "subcategories" => $this->getSubcategories(),
+            "latest_post" => $this->getLatestArticle(4),
+            "like_articles" => $like_articles,
         ]);
     }
 

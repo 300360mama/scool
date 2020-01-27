@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
-    <link rel="stylesheet" href="/scool/css/styles/crud/update.css">
-    <link rel="stylesheet" href="/scool/css/styles/crud/common.css">
-    <link rel="stylesheet" href="/scool/css/fontawesome/all.css">
+    <link rel="stylesheet" href="/css/styles/crud/update.css">
+    <link rel="stylesheet" href="/css/styles/crud/common.css">
+    <link rel="stylesheet" href="/css/fontawesome/all.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <a href="{{ url()->previous() }}">Попередня</a>
         <div id="readWrapper" class="update_wrapper">
             <div class="message"></div>
-            <form  enctype="multipart/form-data" class="update_form" id="createForm" action="/scool/crud/create/{{$table}}" method="post">
+            <form  enctype="multipart/form-data" class="update_form" id="createForm" action="/crud/create/{{$table}}" method="post">
                 {{ csrf_field() }}
                 @foreach($fields as $field)
                 @continue($field === "created_at" || $field === "updated_at" || $field === "id")
@@ -59,8 +59,8 @@
     </div>
 
     @push('scripts')
-    <script src="/scool/js/crud/create.js"></script>
-    <script src="/scool/js/crud/libs.js"></script>
+    <script src="/js/crud/create.js"></script>
+    <script src="/js/crud/libs.js"></script>
     @endpush
 
     @stack('scripts')

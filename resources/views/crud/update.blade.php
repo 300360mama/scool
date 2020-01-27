@@ -9,9 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
-    <link rel="stylesheet" href="/scool/css/styles/crud/update.css">
-    <link rel="stylesheet" href="/scool/css/styles/crud/common.css">
-    <link rel="stylesheet" href="/scool/css/fontawesome/all.css">
+    <link rel="stylesheet" href="/css/styles/crud/update.css">
+    <link rel="stylesheet" href="/css/styles/crud/common.css">
+    <link rel="stylesheet" href="/css/fontawesome/all.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     <div id="readWrapper" class="update_wrapper">
         <div class="message"></div>
 
-        <form class="update_form" id="updateForm" action="/scool/crud/update/articles" method="post">
+        <form class="update_form" id="updateForm" action="/crud/update/articles" method="post">
             {{ csrf_field() }}
             @foreach($fields as $name => $field)
                 @continue($name === "created_at" || $name === "updated_at")
@@ -75,8 +75,8 @@
 </div>
 
 @push('scripts')
-    <script src="/scool/js/crud/update.js"></script>
-    <script src="/scool/js/crud/libs.js"></script>
+    <script src="/js/crud/update.js"></script>
+    <script src="/js/crud/libs.js"></script>
 @endpush
 
 @stack('scripts')
