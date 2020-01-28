@@ -1,6 +1,6 @@
 model.export = [
   {
-    path: "/vue",
-    component: Users
+    path: "",
+    component: Uers
   }
 ];

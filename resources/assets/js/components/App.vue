@@ -1,30 +1,31 @@
 <template>
   <div>
-    <Header></Header>
+    <navigation></navigation>
 
     <div class="wrapper">
-      <Content></Content>
-      <Sidebar></Sidebar>
+      <main-content></main-content>
+      <sidebar></sidebar>
     </div>
 
-    <Footer></Footer>
+    <main-footer></main-footer>
   </div>
 </template>
 
 <script>
-import Header from "./blocks/Header";
-import Footer from "./blocks/Footer";
-import Sidebar from "./blocks/Sidebar";
-import Content from "./blocks/Content";
+import navigation from "./blocks/navigation";
+import mainFooter from "./blocks/main-footer";
+import sidebar from "./blocks/sidebar";
+import mainContent from "./blocks/main-content";
+
 export default {
   data() {
     return {};
   },
   components: {
-    Header,
-    Footer,
-    Sidebar,
-    Content
+    navigation,
+    "main-footer": mainFooter,
+    sidebar,
+    "main-content": mainContent
   },
   mounted() {}
 };
