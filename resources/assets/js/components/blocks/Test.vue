@@ -1,12 +1,9 @@
 <template>
-  <main>
-    <router-view></router-view>
-  </main>
+  <aside id="sidebar">sdfasdsadsaa test stest test</aside>
 </template>
 
 <script>
 export default {
-  components: {},
   mounted() {}
 };
 </script>

@@ -4,19 +4,19 @@
       <i class="fas fa-bars"></i>
       <ul>
         <li class="menu">
-          <a href="/">Головна</a>
+          <router-link to="/">Головна</router-link>
         </li>
         <li class="menu">
-          <a href="/items">Предмети</a>
+          <router-link to="/items">Предмети</router-link>
         </li>
         <li class="menu">
-          <a href="/interesting">Цікавинки</a>
+          <router-link to="/interesting">Цікавинки</router-link>
         </li>
         <li class="menu">
-          <a href="/preschooler">Дошкільнятам</a>
+          <router-link to="/preschooler">Дошкільнятам</router-link>
         </li>
         <li class="menu">
-          <a href="/games">Розвиваючі ігри</a>
+          <router-link to="/games">Розвиваючі ігри</router-link>
         </li>
       </ul>
     </nav>
