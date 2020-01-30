@@ -1,20 +1,37 @@
 <template>
   <main>
-    <short-article :listArticles="listArticles"></short-article>
+    <short-article></short-article>
+    <div>{{ listArticle }}</div>
   </main>
 </template>
 
 <script>
 import shortArticle from "./short-article";
+
 export default {
   data() {
     return {
-      listArticles: Object
+      listArticle: Object
     };
   },
   components: {
     "short-article": shortArticle
   },
-  mounted() {}
+
+  methods: {
+    getListArticle: function() {
+      let path = `/${this.$route.params.category}`;
+      axios.post(path).then(res => {
+        this.listArticle = res.data;
+      });
+    }
+  },
+  mounted() {},
+  watch: {
+    $route(to, from) {
+      this.getListArticle();
+      this.listArticle = "sdfsdfs";
+    }
+  }
 };
 </script>

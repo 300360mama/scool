@@ -4,11 +4,7 @@
     <span class="article_category"></span>
     <span class="article_date"></span>
 
-    <img
-      src="/image/content/article-img.jpg"
-      alt="logo-article"
-      class="article_logo"
-    />
+    <img src="/image/content/article-img.jpg" alt="logo-article" class="article_logo" />
     <span class="article_text"></span>
 
     <a href="/" class="continue_read">
@@ -20,7 +16,7 @@
 
 <script>
 export default {
-  props: [listArticles],
+  props: [],
   components: {},
   mounted() {}
 };
