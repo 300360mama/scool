@@ -227,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'InfoDB' => App\Helpers\Facades\DBFacade::class,
+        'InfoArticle' => App\Helpers\Facades\ArticleFacade::class,
 
     ],
 

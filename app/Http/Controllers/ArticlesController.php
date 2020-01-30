@@ -14,19 +14,19 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
 
-        // $category_name = $request->category ? $request->category : "items";
-        // $category_id = $this->getCategoryId($category_name);
+        $category_name = $request->category ? $request->category : "items";
+        $category_id = $this->getCategoryId($category_name);
 
-        // $articles = Article::where('category_id', $category_id)->paginate(10);
-        // $articles = $articles ? $articles : [];
+        $articles = Article::where('category_id', $category_id)->paginate(10);
+        $articles = $articles ? $articles : [];
 
-        // $like_articles = $this->getLikeArticle();
-        // return view('list_article', [
-        //     'articles' => $articles,
-        //     "subcategories" => $this->getSubcategories(),
-        //     "latest_post" => $this->getLatestArticle(4),
-        //     "like_articles" => $like_articles,
-        // ]);
+        $like_articles = $this->getLikeArticle();
+        return view('list_article', [
+            'articles' => $articles,
+            "subcategories" => $this->getSubcategories(),
+            "latest_post" => $this->getLatestArticle(4),
+            "like_articles" => $like_articles,
+        ]);
 
         return json_encode($request->category);
 
