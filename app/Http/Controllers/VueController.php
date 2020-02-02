@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
+use App\Helpers\InfoArticle;
 
 class VueController extends ArticleController
 {
@@ -17,16 +18,17 @@ class VueController extends ArticleController
     {
 
         $category_name = $request->category ? $request->category : "items";
-        $category_id = $this->getCategoryId($category_name);
+        $category_id = InfoArticle::getCategoryId($category_name);
 
         $articles = Article::where('category_id', $category_id)->paginate(10);
         $articles = $articles ? $articles : [];
 
-        $like_articles = $this->getLikeArticle();
+        $like_articles = InfoArticle::getLikeArticle();
+
         return view('list_article', [
             'articles' => $articles,
-            "subcategories" => $this->getSubcategories(),
-            "latest_post" => $this->getLatestArticle(4),
+            "subcategories" => InfoArticle::getSubcategories(),
+            "latest_post" => InfoArticle::getLatestArticle(4),
             "like_articles" => $like_articles,
         ]);
     }

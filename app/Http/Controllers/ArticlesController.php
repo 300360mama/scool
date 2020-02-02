@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\InfoArticle;
+use App\Article;
 
 class ArticlesController extends Controller
 {
@@ -13,23 +15,23 @@ class ArticlesController extends Controller
      */
     public function index(Request $request)
     {
-
+    
         $category_name = $request->category ? $request->category : "items";
-        $category_id = $this->getCategoryId($category_name);
+        $category_id = InfoArticle::getCategoryId($category_name);
 
         $articles = Article::where('category_id', $category_id)->paginate(10);
         $articles = $articles ? $articles : [];
+        $like_articles = InfoArticle::getLikeArticle();
 
-        $like_articles = $this->getLikeArticle();
-        return view('list_article', [
+        $response_list = [
             'articles' => $articles,
-            "subcategories" => $this->getSubcategories(),
-            "latest_post" => $this->getLatestArticle(4),
+            "subcategories" => InfoArticle::getSubcategories(),
+            "latest_post" => InfoArticle::getLatestArticle(4),
             "like_articles" => $like_articles,
-        ]);
+        ];
 
-        return json_encode($request->category);
-
+        return \json_encode($response_list);
+        
     }
 
     /**

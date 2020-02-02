@@ -9,12 +9,12 @@ use App\Subcategory;
 class InfoArticle
 {
 
-    protected function getSubcategories()
+    public static function getSubcategories()
     {
         return Subcategory::all();
     }
 
-    protected function getCategoryId(string $category_name)
+    public static function getCategoryId(string $category_name)
     {
 
         $category_isset = Category::where("name", $category_name)->exists();
@@ -26,13 +26,13 @@ class InfoArticle
         return 1;
     }
 
-    protected function getLatestArticle($quantity)
+    public static function getLatestArticle($quantity)
     {
         $res = Article::orderBy("created_at", "desc'")->take($quantity)->get();
         return $res;
     }
 
-    protected function getLikeArticle()
+    public static function getLikeArticle()
     {
         $article_count = count(Article::get(["id"]));
         $quantity_like_article = 3;

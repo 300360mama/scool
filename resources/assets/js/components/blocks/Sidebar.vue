@@ -19,7 +19,6 @@
             <span class="post_id_date"></span>
           </div>
         </a>
-        @endforeach
       </div>
     </section>
   </aside>
