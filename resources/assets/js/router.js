@@ -1,11 +1,18 @@
 import VueRouter from "vue-router";
-import mainContent from "./components/blocks/main-content";
+import shortArticle from "./components/blocks/short-article";
+import fullArticle from "./components/blocks/full-article";
 
 export default new VueRouter({
   routes: [
     {
+      name: "shortArticle",
       path: "/:category",
-      component: mainContent
+      component: shortArticle
+    },
+    {
+      name: "fullArticle",
+      path: "/:category/:id",
+      component: fullArticle
     }
   ],
   mode: "history"

@@ -1,9 +1,7 @@
 <template>
   <div>
     <navigation></navigation>
-
     <main-content></main-content>
-
     <main-footer></main-footer>
   </div>
 </template>
