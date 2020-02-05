@@ -23,6 +23,8 @@ class ArticlesController extends Controller
         $articles = $articles ? $articles : [];
         $like_articles = InfoArticle::getLikeArticle();
 
+
+        
         $response_list = [
             'articles' => $articles,
             "subcategories" => InfoArticle::getSubcategories(),

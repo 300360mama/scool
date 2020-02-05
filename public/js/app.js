@@ -47678,6 +47678,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47690,14 +47693,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   components: {},
   methods: {
-    getArticleText: function getArticleText() {
-      return this.article.content_article.slice(0, 100) + "...";
+    getArticleText: function getArticleText(id) {
+      return this.articles[id].content_article.slice(0, 100) + "...";
     },
     getData: function getData() {
       var _this = this;
 
       var path = "/" + this.$route.params.category;
       axios.post(path).then(function (res) {
+
+        console.log(res);
         _this.articles = res.data.articles.data;
         _this.subcategories = res.data.subcategories;
         _this.latest_post = res.data.latest_post;
@@ -47710,6 +47715,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.getData();
       console.log("list");
     }
+  },
+  created: function created() {
+    this.getData();
   }
 });
 
@@ -47721,27 +47729,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", { key: _vm.id }, [
-    _c("h3", { staticClass: "title" }, [
-      _vm._v(_vm._s(_vm.article.title_article))
-    ]),
-    _vm._v(" "),
-    _c("span", { staticClass: "article_category" }),
-    _vm._v(" "),
-    _c("span", { staticClass: "article_date" }),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "article_logo",
-      attrs: { src: "/image/content/article-img.jpg", alt: "logo-article" }
+  return _c(
+    "section",
+    _vm._l(_vm.articles, function(article, id) {
+      return _c("article", { key: id }, [
+        _c("h3", { staticClass: "title" }, [
+          _vm._v(_vm._s(article.title_article))
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "article_category" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "article_date" }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "article_logo",
+          attrs: { src: "/image/content/article-img.jpg", alt: "logo-article" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "article_text" }, [
+          _vm._v(_vm._s(_vm.getArticleText(id)))
+        ]),
+        _vm._v(" "),
+        _vm._m(0, true)
+      ])
     }),
-    _vm._v(" "),
-    _c("span", { staticClass: "article_text" }, [
-      _vm._v(_vm._s(_vm.getArticleText()))
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v("\n\n    " + _vm._s(_vm.articles) + "\n \n")
-  ])
+    0
+  )
 }
 var staticRenderFns = [
   function() {
