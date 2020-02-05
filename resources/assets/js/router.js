@@ -5,7 +5,6 @@ import fullArticle from "./components/blocks/full-article";
 export default new VueRouter({
   routes: [
     {
-      name: "shortArticle",
       path: "/:category",
       component: shortArticle
     },

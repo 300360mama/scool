@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <main>
-     <router-view name="shortArticle"></router-view>
+     <router-view></router-view>
      <router-view name="fullArticle"></router-view>
     </main>
    <sidebar></sidebar>

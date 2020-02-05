@@ -45,6 +45,7 @@ export default {
   watch: {
     $route(to, from) {
       this.getData();
+      console.log("list")
     }
   }
 };
