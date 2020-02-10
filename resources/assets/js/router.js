@@ -5,14 +5,15 @@ import fullArticle from "./components/blocks/full-article";
 export default new VueRouter({
   routes: [
     {
-      path: "/:category",
-      component: shortArticle
-    },
-    {
       name: "fullArticle",
       path: "/:category/:id",
       component: fullArticle
+    },
+    {
+      path: "/:category",
+      component: shortArticle
     }
+    
   ],
   mode: "history"
 });

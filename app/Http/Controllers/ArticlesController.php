@@ -23,8 +23,6 @@ class ArticlesController extends Controller
         $articles = $articles ? $articles : [];
         $like_articles = InfoArticle::getLikeArticle();
 
-
-        
         $response_list = [
             'articles' => $articles,
             "subcategories" => InfoArticle::getSubcategories(),
@@ -63,9 +61,15 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $category_name = $request->category ? $request->category : "items";
+        $category_id = InfoArticle::getCategoryId($category_name);
+
+
+        $first_id = Article::take(1)->get(["id"]);
+        return json_encode($first_id);
+        
     }
 
     /**

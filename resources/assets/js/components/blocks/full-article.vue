@@ -7,19 +7,17 @@
 <script>
 export default {
   props: [
-  'articles'
   ],
 
   components: {},
   mounted() {},
   methods: {
     getData: function() {
-      let path = `/${this.$route.params.category}`;
+      let path = `/${this.$route.params.category}/${this.$route.params.id}`;
       axios.post(path).then(res => {
-        this.articles = res.data.articles.data;
-        this.subcategories = res.data.subcategories;
-        this.latest_post = res.data.latest_post;
-        this.like_articles = res.data.like_articles;
+
+
+        console.log(res);
       });
     }
     
@@ -29,6 +27,9 @@ export default {
       this.getData();
       console.log("sdfsdf");
     }
+  },
+  created: function(){
+    this.getData();
   }
 };
 </script>

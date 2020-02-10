@@ -8,15 +8,11 @@
       <img src="/image/content/article-img.jpg" alt="logo-article" class="article_logo" />
       <span class="article_text">{{getArticleText(id)}}</span>
 
-      <a href="/" class="continue_read">
+      <router-link :to="getPathToArticle(article.id)" class="continue_read">
         Продовжити читання
         <span class="fa fa-arrow-right"></span>
-      </a>
-
-       
+      </router-link>
     </article>
-
-   
   </section>
 </template>
 
@@ -27,7 +23,8 @@ export default {
       articles: {},
       subcategories: {},
       latest_post: {},
-      like_articles: {}
+      like_articles: {},
+      category: this.$route.params.category
     };
   },
   components: {},
@@ -35,19 +32,17 @@ export default {
     getArticleText: function(id) {
       return `${this.articles[id].content_article.slice(0, 100)}...`;
     },
+    getPathToArticle: function(id) {
+      return `/${this.$route.params.category}/${id}`;
+    },
     getData: function() {
       let path = `/${this.$route.params.category}`;
       axios.post(path).then(res => {
-
         console.log(res);
         this.articles = res.data.articles.data;
         this.subcategories = res.data.subcategories;
         this.latest_post = res.data.latest_post;
         this.like_articles = res.data.like_articles;
-
-    
-
-        
       });
     }
   },
