@@ -66,9 +66,18 @@ class ArticlesController extends Controller
         $category_name = $request->category ? $request->category : "items";
         $category_id = InfoArticle::getCategoryId($category_name);
 
+        $like_articles = InfoArticle::getLikeArticle();
+        $article = Article::where("id", $request->id)->get()->toArray();
+        $article = $article ? $article : [];
 
-        $first_id = Article::take(1)->get(["id"]);
-        return json_encode($first_id);
+        $response_list = [
+            'article' => $article,
+            "subcategories" => InfoArticle::getSubcategories(),
+            "latest_post" => InfoArticle::getLatestArticle(4),
+            "like_articles" => $like_articles,
+        ];
+        return \json_encode($response_list);
+
         
     }
 

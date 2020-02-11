@@ -1,7 +1,8 @@
 <?php
 
-Route::post('/{category}/{id}', 'ArticlesController@show');
+Route::post('/{category}/article/{id}', 'ArticlesController@show');
 Route::post('/{category}', 'ArticlesController@index');
+Route::post('/{category}/page/{page}', 'ArticlesController@index');
 Route::post('/', 'ArticlesController@index');
 
 Route::get('/', 'VueController@index');

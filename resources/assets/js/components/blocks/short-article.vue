@@ -33,7 +33,7 @@ export default {
       return `${this.articles[id].content_article.slice(0, 100)}...`;
     },
     getPathToArticle: function(id) {
-      return `/${this.$route.params.category}/${id}`;
+      return `/${this.$route.params.category}/article/${id}`;
     },
     getData: function() {
       let path = `/${this.$route.params.category}`;

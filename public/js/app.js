@@ -47644,8 +47644,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
   routes: [{
     name: "fullArticle",
-    path: "/:category/:id",
+    path: "/:category/article/:id",
     component: __WEBPACK_IMPORTED_MODULE_2__components_blocks_full_article___default.a
+  }, {
+    "name": "articlesWithPages",
+    path: "/:category/page/:page",
+    component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }, {
     path: "/:category",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
@@ -47694,7 +47698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.articles[id].content_article.slice(0, 100) + "...";
     },
     getPathToArticle: function getPathToArticle(id) {
-      return "/" + this.$route.params.category + "/" + id;
+      return "/" + this.$route.params.category + "/article/" + id;
     },
     getData: function getData() {
       var _this = this;
@@ -47795,8 +47799,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      article: {},
+      subcategories: {},
+      latest_post: {},
+      like_articles: {}
+    };
+  },
   props: [],
 
   components: {},
@@ -47804,10 +47824,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     getData: function getData() {
-      var path = "/" + this.$route.params.category + "/" + this.$route.params.id;
-      axios.post(path).then(function (res) {
+      var _this = this;
 
+      var path = "/" + this.$route.params.category + "/article/" + this.$route.params.id;
+      axios.post(path).then(function (res) {
         console.log(res);
+        _this.article = res.data.article[0];
+        _this.subcategories = res.data.subcategories;
+        _this.latest_post = res.data.latest_post;
+        _this.like_articles = res.data.like_articles;
       });
     }
 
@@ -47831,7 +47856,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", [_vm._v("\n  full\n")])
+  return _c("article", [
+    _c("h3", { staticClass: "title" }, [
+      _vm._v(_vm._s(_vm.article.title_article))
+    ]),
+    _vm._v(" "),
+    _c("span", { staticClass: "article_category" }),
+    _vm._v(" "),
+    _c("span", { staticClass: "article_date" }),
+    _vm._v(" "),
+    _c("span", { staticClass: "article_text" }, [
+      _vm._v("\n          " + _vm._s(_vm.article.content_article) + "\n      ")
+    ]),
+    _vm._v("\n\n      " + _vm._s(_vm.article) + "\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48282,6 +48320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -48471,6 +48510,8 @@ var render = function() {
         "main",
         [
           _c("router-view"),
+          _vm._v(" "),
+          _c("router-view", { attrs: { name: "articlesWithPages" } }),
           _vm._v(" "),
           _c("router-view", { attrs: { name: "fullArticle" } })
         ],
