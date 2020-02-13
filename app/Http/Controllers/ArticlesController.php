@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Helpers\InfoArticle;
 use App\Article;
+use App\Helpers\InfoArticle;
+use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,7 @@ class ArticlesController extends Controller
      */
     public function index(Request $request)
     {
-    
+
         $category_name = $request->category ? $request->category : "items";
         $category_id = InfoArticle::getCategoryId($category_name);
 
@@ -31,7 +32,7 @@ class ArticlesController extends Controller
         ];
 
         return \json_encode($response_list);
-        
+
     }
 
     /**
@@ -78,7 +79,6 @@ class ArticlesController extends Controller
         ];
         return \json_encode($response_list);
 
-        
     }
 
     /**

@@ -26,6 +26,20 @@
 
 <script>
 export default {
+  data: function() {
+    return {
+      categories: [],
+      latestPosts: []
+    };
+  },
+  created: function() {
+
+    
+  },
+
+  methods: {
+    getCategories: function() {}
+  },
   mounted() {}
 };
 </script>

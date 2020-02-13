@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use App\Http\Controllers\ArticleController;
-use Illuminate\Http\Request;
 use App\Helpers\InfoArticle;
+use Illuminate\Http\Request;
 
-class VueController extends ArticleController
+class VueController extends Controller
 {
     /**
      * Display a listing of the resource.

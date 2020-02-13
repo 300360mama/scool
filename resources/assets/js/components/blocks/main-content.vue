@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
     <main>
-     <router-view></router-view>
+      <router-view></router-view>
      <router-view name="articlesWithPages"></router-view>
-     <router-view name="fullArticle"></router-view>
+      <router-view name="fullArticle"></router-view>
     </main>
-   <sidebar></sidebar>
+    <sidebar></sidebar>
   </div>
 </template>
 
@@ -16,17 +16,14 @@ import shortArticle from "./short-article";
 
 export default {
   data() {
-    return {
-     
-    };
+    return {};
   },
   components: {
     sidebar,
     "full-article": fullArticle,
-    "short-article": shortArticle,
+    "short-article": shortArticle
   },
 
-  methods: {
-  }
+  methods: {}
 };
 </script>
