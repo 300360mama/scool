@@ -6,7 +6,7 @@
       <span class="article_date"></span>
 
       <img src="/image/content/article-img.jpg" alt="logo-article" class="article_logo" />
-      <span class="article_text">{{getArticleText(id)}}</span>
+      <span class="article_text">{{ article.content_article }}</span>
 
       <router-link :to="getPathToArticle(article.id)" class="continue_read">
         Продовжити читання
@@ -17,28 +17,33 @@
 </template>
 
 <script>
-
 export default {
   data: function() {
     return {
-      articles:  {}
+      articles: {}
     };
   },
   components: {},
   methods: {
     setArticle: function() {
-      this.articles = this.$store.state.aritcles;
+      this.articles = this.$store.state.articles;
+    },
+    getPathToArticle: function(id) {
+      let path = `/${this.$route.params.category}/article/${id}`;
+
+      return path;
     }
   },
   watch: {
     $route(to, from) {
-     this.$store.dispatch("getArticles");
-     this.setArticle();
+      let path = `/${this.$route.params.category}`;
+      this.$store.dispatch("getArticles", path);
+      this.setArticle();
+      console.log(this.articles);
     }
   },
   created: function() {
-    this.$store.dispatch("getArticles");
-    this.setArticle();
+    
   }
 };
 </script>

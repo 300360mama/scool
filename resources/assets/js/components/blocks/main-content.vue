@@ -2,7 +2,7 @@
   <div class="wrapper">
     <main>
       <router-view></router-view>
-     <router-view name="articlesWithPages"></router-view>
+      <router-view name="articlesWithPages"></router-view>
       <router-view name="fullArticle"></router-view>
     </main>
     <sidebar></sidebar>
@@ -24,6 +24,11 @@ export default {
     "short-article": shortArticle
   },
 
-  methods: {}
+  methods: {},
+  created: function() {
+    console.log("dsffd");
+    let path = `/${this.$route.params.category}`;
+    this.$store.dispatch("getArticles", path);
+  }
 };
 </script>
