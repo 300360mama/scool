@@ -17,43 +17,28 @@
 </template>
 
 <script>
+
 export default {
   data: function() {
     return {
-      articles: {},
-      subcategories: {},
-      latest_post: {},
-      like_articles: {},
-      category: this.$route.params.category
+      articles:  {}
     };
   },
   components: {},
   methods: {
-    getArticleText: function(id) {
-      return `${this.articles[id].content_article.slice(0, 100)}...`;
-    },
-    getPathToArticle: function(id) {
-      return `/${this.$route.params.category}/article/${id}`;
-    },
-    getData: function() {
-      let path = `/${this.$route.params.category}`;
-      axios.post(path).then(res => {
-        console.log(res);
-        this.articles = res.data.articles.data;
-        this.subcategories = res.data.subcategories;
-        this.latest_post = res.data.latest_post;
-        this.like_articles = res.data.like_articles;
-      });
+    setArticle: function() {
+      this.articles = this.$store.state.aritcles;
     }
   },
   watch: {
     $route(to, from) {
-      this.getData();
-      console.log("list");
+     this.$store.dispatch("getArticles");
+     this.setArticle();
     }
   },
   created: function() {
-    this.getData();
+    this.$store.dispatch("getArticles");
+    this.setArticle();
   }
 };
 </script>
