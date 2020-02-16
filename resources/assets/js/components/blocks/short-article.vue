@@ -25,25 +25,18 @@ export default {
   },
   components: {},
   methods: {
-    setArticle: function() {
+    setArticles: function() {
+      console.log(this.$store.state.articles);
       this.articles = this.$store.state.articles;
     },
     getPathToArticle: function(id) {
       let path = `/${this.$route.params.category}/article/${id}`;
-
       return path;
     }
   },
-  watch: {
-    $route(to, from) {
-      let path = `/${this.$route.params.category}`;
-      this.$store.dispatch("getArticles", path);
-      this.setArticle();
-      console.log(this.articles);
-    }
-  },
+  watch: {},
   created: function() {
-    
+    this.setArticles();
   }
 };
 </script>

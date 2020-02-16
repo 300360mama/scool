@@ -32,9 +32,8 @@ export default {
       latestPosts: []
     };
   },
-  created: function() {
-    
-  },
+  created: function() {},
+  watch: {},
 
   methods: {
     getCategories: function() {}

@@ -23,6 +23,12 @@ export default {
     "full-article": fullArticle,
     "short-article": shortArticle
   },
+   watch: {
+    $route(to, from) {
+      let path = `/${this.$route.params.category}`;
+      this.$store.dispatch("getArticles", path);
+    }
+  },
 
   methods: {},
   created: function() {

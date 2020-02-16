@@ -48763,24 +48763,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   components: {},
   methods: {
-    setArticle: function setArticle() {
+    setArticles: function setArticles() {
+      console.log(this.$store.state.articles);
       this.articles = this.$store.state.articles;
     },
     getPathToArticle: function getPathToArticle(id) {
       var path = "/" + this.$route.params.category + "/article/" + id;
-
       return path;
     }
   },
-  watch: {
-    $route: function $route(to, from) {
-      var path = "/" + this.$route.params.category;
-      this.$store.dispatch("getArticles", path);
-      this.setArticle();
-      console.log(this.articles);
-    }
-  },
-  created: function created() {}
+  watch: {},
+  created: function created() {
+    this.setArticles();
+  }
 });
 
 /***/ }),
@@ -49395,6 +49390,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     "full-article": __WEBPACK_IMPORTED_MODULE_1__full_article___default.a,
     "short-article": __WEBPACK_IMPORTED_MODULE_2__short_article___default.a
   },
+  watch: {
+    $route: function $route(to, from) {
+      var path = "/" + this.$route.params.category;
+      this.$store.dispatch("getArticles", path);
+    }
+  },
 
   methods: {},
   created: function created() {
@@ -49492,6 +49493,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   created: function created() {},
+  watch: {},
 
   methods: {
     getCategories: function getCategories() {}
@@ -49656,15 +49658,35 @@ if (false) {
   },
   getters: {},
   mutations: {
-    setArticles: function setArticles(state, articles) {
-      this.state.articles = articles;
+    setArticles: function setArticles(state, data) {
+      this.state.articles = data;
+    },
+    setLikeArticles: function setLikeArticles(state, data) {
+      this.state.like_articles = data;
+    },
+    setLatestPost: function setLatestPost(state, data) {
+      this.state.latest_post = data;
+    },
+    setSubcategories: function setSubcategories(state, data) {
+      this.state.subcategories = data;
+    },
+    setArticle: function setArticle(state, data) {
+      this.state.article = data;
     }
   },
   actions: {
     getArticles: function getArticles(context, path) {
       axios.post(path).then(function (res) {
+        console.log(res.data);
         var articles = res.data.articles.data;
+        var like_articles = res.data.like_articles.data;
+        var latest_post = res.data.latest_post.data;
+        var subcategories = res.data.subcategories.data;
+
         context.commit("setArticles", articles);
+        context.commit("setLikeArticles", like_articles);
+        context.commit("setLatestPost", latest_post);
+        context.commit("setSubcategories", subcategories);
       });
     }
   }
