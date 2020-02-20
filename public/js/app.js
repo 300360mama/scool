@@ -4089,7 +4089,7 @@ module.exports = Component.exports
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/* unused harmony export Store */
 /* unused harmony export install */
-/* unused harmony export mapState */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapState; });
 /* unused harmony export mapMutations */
 /* unused harmony export mapGetters */
 /* unused harmony export mapActions */
@@ -48724,7 +48724,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     path: "/:category/page/:page",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }, {
-    path: "/:category",
+    path: "/:category?",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }],
   mode: "history"
@@ -48736,6 +48736,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(13);
 //
 //
 //
@@ -48755,27 +48756,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      articles: {}
-    };
+    return {};
   },
   components: {},
   methods: {
-    setArticles: function setArticles() {
-      console.log(this.$store.state.articles);
-      this.articles = this.$store.state.articles;
-    },
     getPathToArticle: function getPathToArticle(id) {
       var path = "/" + this.$route.params.category + "/article/" + id;
       return path;
     }
   },
-  watch: {},
-  created: function created() {
-    this.setArticles();
-  }
+  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["articles"])
 });
 
 /***/ }),
@@ -49392,15 +49385,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     $route: function $route(to, from) {
-      var path = "/" + this.$route.params.category;
+      var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
       this.$store.dispatch("getArticles", path);
     }
   },
 
   methods: {},
   created: function created() {
-    console.log("dsffd");
-    var path = "/" + this.$route.params.category;
+    var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
     this.$store.dispatch("getArticles", path);
   }
 });
@@ -49458,6 +49450,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(13);
 //
 //
 //
@@ -49484,21 +49477,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      categories: [],
-      latestPosts: []
-    };
+    return {};
   },
-  created: function created() {},
-  watch: {},
-
-  methods: {
-    getCategories: function getCategories() {}
-  },
-  mounted: function mounted() {}
+  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["subcategories"])
 });
 
 /***/ }),
@@ -49509,54 +49495,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("aside", { attrs: { id: "sidebar" } }, [
+    _c("i", { staticClass: "fas fa-list-ul" }),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "latest_post aside_section" }, [
+      _c("span", { staticClass: "aside_title" }, [_vm._v("Latest Post")]),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v("\n    " + _vm._s(_vm.subcategories) + "\n  ")
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("aside", { attrs: { id: "sidebar" } }, [
-      _c("i", { staticClass: "fas fa-list-ul" }),
+    return _c("section", { staticClass: "aside_section categories" }, [
+      _c("span", { staticClass: "aside_title" }, [_vm._v("Шкільні предмети")]),
       _vm._v(" "),
-      _c("section", { staticClass: "aside_section categories" }, [
-        _c("span", { staticClass: "aside_title" }, [
-          _vm._v("Шкільні предмети")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "categories_list", attrs: { id: "categoriesList" } },
-          [
-            _c("a", {
-              staticClass: "category",
-              attrs: { href: "/subcategory/" }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "open_block fa-angle-double-down fa",
-          attrs: { id: "openArrow" }
-        })
-      ]),
+      _c(
+        "div",
+        { staticClass: "categories_list", attrs: { id: "categoriesList" } },
+        [_c("a", { staticClass: "category", attrs: { href: "/subcategory/" } })]
+      ),
       _vm._v(" "),
-      _c("section", { staticClass: "latest_post aside_section" }, [
-        _c("span", { staticClass: "aside_title" }, [_vm._v("Latest Post")]),
+      _c("i", {
+        staticClass: "open_block fa-angle-double-down fa",
+        attrs: { id: "openArrow" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "latest_post_list" }, [
+      _c("a", { staticClass: "latest_post_block", attrs: { href: "/" } }, [
+        _c("img", {
+          staticClass: "post_id_logo",
+          attrs: { src: "/image/sidebar/image1.png", alt: "" }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "latest_post_list" }, [
-          _c("a", { staticClass: "latest_post_block", attrs: { href: "/" } }, [
-            _c("img", {
-              staticClass: "post_id_logo",
-              attrs: { src: "/image/sidebar/image1.png", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "post_id" }, [
-              _c("span", { staticClass: "post_id_text" }),
-              _vm._v(" "),
-              _c("span", { staticClass: "post_id_date" })
-            ])
-          ])
+        _c("div", { staticClass: "post_id" }, [
+          _c("span", { staticClass: "post_id_text" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "post_id_date" })
         ])
       ])
     ])
@@ -49586,11 +49572,11 @@ var render = function() {
       _c(
         "main",
         [
-          _c("router-view"),
-          _vm._v(" "),
           _c("router-view", { attrs: { name: "articlesWithPages" } }),
           _vm._v(" "),
-          _c("router-view", { attrs: { name: "fullArticle" } })
+          _c("router-view", { attrs: { name: "fullArticle" } }),
+          _vm._v(" "),
+          _c("router-view")
         ],
         1
       ),
@@ -49677,11 +49663,12 @@ if (false) {
   actions: {
     getArticles: function getArticles(context, path) {
       axios.post(path).then(function (res) {
-        console.log(res.data);
         var articles = res.data.articles.data;
         var like_articles = res.data.like_articles.data;
         var latest_post = res.data.latest_post.data;
         var subcategories = res.data.subcategories.data;
+
+        console.log(res);
 
         context.commit("setArticles", articles);
         context.commit("setLikeArticles", like_articles);

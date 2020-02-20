@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
     <main>
-      <router-view></router-view>
       <router-view name="articlesWithPages"></router-view>
       <router-view name="fullArticle"></router-view>
+      <router-view></router-view>
     </main>
     <sidebar></sidebar>
   </div>
@@ -23,17 +23,20 @@ export default {
     "full-article": fullArticle,
     "short-article": shortArticle
   },
-   watch: {
+  watch: {
     $route(to, from) {
-      let path = `/${this.$route.params.category}`;
+      let path = this.$route.params.category
+        ? `/${this.$route.params.category}`
+        : "/";
       this.$store.dispatch("getArticles", path);
     }
   },
 
   methods: {},
   created: function() {
-    console.log("dsffd");
-    let path = `/${this.$route.params.category}`;
+    let path = this.$route.params.category
+      ? `/${this.$route.params.category}`
+      : "/";
     this.$store.dispatch("getArticles", path);
   }
 };

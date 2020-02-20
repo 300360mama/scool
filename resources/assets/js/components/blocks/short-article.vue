@@ -17,26 +17,18 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data: function() {
-    return {
-      articles: {}
-    };
+    return {};
   },
   components: {},
   methods: {
-    setArticles: function() {
-      console.log(this.$store.state.articles);
-      this.articles = this.$store.state.articles;
-    },
     getPathToArticle: function(id) {
       let path = `/${this.$route.params.category}/article/${id}`;
       return path;
     }
   },
-  watch: {},
-  created: function() {
-    this.setArticles();
-  }
+  computed: mapState(["articles"])
 };
 </script>

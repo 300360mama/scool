@@ -20,24 +20,17 @@
           </div>
         </a>
       </div>
+      {{ subcategories }}
     </section>
   </aside>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data: function() {
-    return {
-      categories: [],
-      latestPosts: []
-    };
+    return {};
   },
-  created: function() {},
-  watch: {},
-
-  methods: {
-    getCategories: function() {}
-  },
-  mounted() {}
+  computed: mapState(["subcategories"])
 };
 </script>

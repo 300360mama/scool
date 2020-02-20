@@ -15,7 +15,7 @@ export default new VueRouter({
       component: shortArticle
     },
     {
-      path: "/:category",
+      path: "/:category?",
       component: shortArticle
     }
     
