@@ -30,16 +30,14 @@ export default {
     getArticles(context, path) {
       axios.post(path).then(res => {
         let articles = res.data.articles.data;
-        let like_articles = res.data.like_articles.data;
-        let latest_post = res.data.latest_post.data;
-        let subcategories = res.data.subcategories.data;
-
-        console.log(res);
+        let like_articles = res.data.like_articles;
+        let latest_post = res.data.latest_post;
+        let subcategories = res.data.subcategories;
 
         context.commit("setArticles", articles);
+        context.commit("setSubcategories", subcategories);
         context.commit("setLikeArticles", like_articles);
         context.commit("setLatestPost", latest_post);
-        context.commit("setSubcategories", subcategories);
       });
     }
   }

@@ -25,7 +25,8 @@ export default {
   components: {},
   methods: {
     getPathToArticle: function(id) {
-      let path = `/${this.$route.params.category}/article/${id}`;
+      let category = this.$route.params.category ? this.$route.params.category : "items";
+      let path = `/${category}/article/${id}`;
       return path;
     }
   },

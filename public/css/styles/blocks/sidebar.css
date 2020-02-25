@@ -156,6 +156,8 @@ aside .fa-list-ul {
 }
 
 
+
+
 @keyframes show_list {
     from {
         transform: translateX(100%);

@@ -10,15 +10,19 @@ export default new VueRouter({
       component: fullArticle
     },
     {
-      "name": "articlesWithPages",
+      name: "articlesWithPages",
       path: "/:category/page/:page",
       component: shortArticle
+    },
+    {
+      name: "subcategories",
+      path: "/items/:subcategory/:id",
+      component: fullArticle
     },
     {
       path: "/:category?",
       component: shortArticle
     }
-    
   ],
   mode: "history"
 });
