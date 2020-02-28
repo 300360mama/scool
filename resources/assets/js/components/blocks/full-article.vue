@@ -1,55 +1,39 @@
 <template>
   <article>
-     <h3 class="title">{{ article.title_article }}</h3>
-        <span class="article_category"> </span>
-        <span class="article_date"></span>
-        <!-- <img src="./image/content/article-img.jpg" alt="logo-article" class="article_logo"> -->
-        <span class="article_text">
-            {{article.content_article}}
-        </span>
-
-        {{article}}
+    <h3 class="title">{{ article.title_article }}</h3>
+    <span class="article_category"></span>
+    <span class="article_date">{{article.created_at}}</span>
+    <!-- <img src="./image/content/article-img.jpg" alt="logo-article" class="article_logo" /> -->
+    <span class="article_text">{{article.content_article}}</span>
+    {{categories}}
+    {{getCategory()}}
   </article>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-   data: function() {
-    return {
-      article: {},
-      subcategories: {},
-      latest_post: {},
-      like_articles: {}
-    };
+  data: function() {
+    return {};
   },
-  props: [
-  ],
-
-  components: {},
-  mounted() {},
-  methods: {
-    getData: function() {
-
-      let path = `/${this.$route.params.category}/article/${this.$route.params.id}`;
-      axios.post(path).then(res => {
-         console.log(res);
-           this.article = res.data.article[0];
-        this.subcategories = res.data.subcategories;
-        this.latest_post = res.data.latest_post;
-        this.like_articles = res.data.like_articles;
-       
-      });
-    }
-    
-  },
+  props: [],
   watch: {
     $route(to, from) {
-      this.getData();
-      console.log("sdfsdf");
+      let path = `/article/${this.$route.params.id}`;
+      this.$store.dispatch("getArticle", path);
     }
   },
-  created: function(){
-    this.getData();
-  }
+  methods: {
+    getCategory: function() {
+      this.categories.find(elem => {
+        return elem.id === this.article.id;
+      });
+    }
+  },
+  created: function() {
+    let path = `/article/${this.$route.params.id}`;
+    this.$store.dispatch("getArticle", path);
+  },
+  computed: mapState(["article", "categories"])
 };
 </script>

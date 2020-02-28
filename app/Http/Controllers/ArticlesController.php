@@ -23,12 +23,14 @@ class ArticlesController extends Controller
         $articles = Article::where('category_id', $category_id)->paginate(10);
         $articles = $articles ? $articles : [];
         $like_articles = InfoArticle::getLikeArticle();
+        $categories = InfoArticle::getCategories();
 
         $response_list = [
             'articles' => $articles,
             "subcategories" => InfoArticle::getSubcategories(),
             "latest_post" => InfoArticle::getLatestArticle(4),
             "like_articles" => $like_articles,
+            "categories" => $categories
         ];
 
         return \json_encode($response_list);
@@ -64,18 +66,19 @@ class ArticlesController extends Controller
      */
     public function show(Request $request)
     {
-        $category_name = $request->category ? $request->category : "items";
-        $category_id = InfoArticle::getCategoryId($category_name);
 
         $like_articles = InfoArticle::getLikeArticle();
         $article = Article::where("id", $request->id)->get()->toArray();
         $article = $article ? $article : [];
+        $categories = InfoArticle::getCategories();
+        
 
         $response_list = [
             'article' => $article,
             "subcategories" => InfoArticle::getSubcategories(),
             "latest_post" => InfoArticle::getLatestArticle(4),
             "like_articles" => $like_articles,
+            "categories" => $categories
         ];
         return \json_encode($response_list);
 

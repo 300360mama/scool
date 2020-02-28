@@ -9,6 +9,11 @@ use App\Subcategory;
 class InfoArticle
 {
 
+    public static function getCategories()
+    {
+        return Category::get(["name", "id"])->toArray();
+    }
+
     public static function getSubcategories()
     {
         return Subcategory::all();
@@ -54,6 +59,5 @@ class InfoArticle
         return $articles;
 
     }
-
 
 }

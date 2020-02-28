@@ -48717,16 +48717,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
   routes: [{
     name: "fullArticle",
-    path: "/:category/article/:id",
+    path: "/article/:id",
     component: __WEBPACK_IMPORTED_MODULE_2__components_blocks_full_article___default.a
   }, {
     name: "articlesWithPages",
     path: "/:category/page/:page",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
-  }, {
-    name: "subcategories",
-    path: "/items/:subcategory/:id",
-    component: __WEBPACK_IMPORTED_MODULE_2__components_blocks_full_article___default.a
   }, {
     path: "/:category?",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
@@ -48759,6 +48755,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48768,12 +48766,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {},
   methods: {
     getPathToArticle: function getPathToArticle(id) {
-      var category = this.$route.params.category ? this.$route.params.category : "items";
-      var path = "/" + category + "/article/" + id;
+      var path = "/article/" + id;
       return path;
     }
   },
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["articles"])
+  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["articles", "categories"]),
+  watch: {
+    $route: function $route(to, from) {
+      var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
+      this.$store.dispatch("getArticles", path);
+    }
+  },
+  created: function created() {
+    var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
+    this.$store.dispatch("getArticles", path);
+  }
 });
 
 /***/ }),
@@ -48821,7 +48828,8 @@ var render = function() {
               _vm._v("\n      Продовжити читання\n      "),
               _c("span", { staticClass: "fa fa-arrow-right" })
             ]
-          )
+          ),
+          _vm._v("\n\n    " + _vm._s(_vm.categories) + "\n  ")
         ],
         1
       )
@@ -48845,6 +48853,7 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
 //
 //
 //
@@ -48857,47 +48866,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      article: {},
-      subcategories: {},
-      latest_post: {},
-      like_articles: {}
-    };
+    return {};
   },
   props: [],
-
-  components: {},
-  mounted: function mounted() {},
-
-  methods: {
-    getData: function getData() {
-      var _this = this;
-
-      var path = "/" + this.$route.params.category + "/article/" + this.$route.params.id;
-      axios.post(path).then(function (res) {
-        console.log(res);
-        _this.article = res.data.article[0];
-        _this.subcategories = res.data.subcategories;
-        _this.latest_post = res.data.latest_post;
-        _this.like_articles = res.data.like_articles;
-      });
-    }
-
-  },
   watch: {
     $route: function $route(to, from) {
-      this.getData();
-      console.log("sdfsdf");
+      var path = "/article/" + this.$route.params.id;
+      this.$store.dispatch("getArticle", path);
+    }
+  },
+  methods: {
+    getCategory: function getCategory() {
+      var _this = this;
+
+      this.categories.find(function (elem) {
+        return elem.id === _this.article.id;
+      });
     }
   },
   created: function created() {
-    this.getData();
-  }
+    var path = "/article/" + this.$route.params.id;
+    this.$store.dispatch("getArticle", path);
+  },
+  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["article", "categories"])
 });
 
 /***/ }),
@@ -48915,12 +48910,20 @@ var render = function() {
     _vm._v(" "),
     _c("span", { staticClass: "article_category" }),
     _vm._v(" "),
-    _c("span", { staticClass: "article_date" }),
+    _c("span", { staticClass: "article_date" }, [
+      _vm._v(_vm._s(_vm.article.created_at))
+    ]),
     _vm._v(" "),
     _c("span", { staticClass: "article_text" }, [
-      _vm._v("\n          " + _vm._s(_vm.article.content_article) + "\n      ")
+      _vm._v(_vm._s(_vm.article.content_article))
     ]),
-    _vm._v("\n\n      " + _vm._s(_vm.article) + "\n")
+    _vm._v(
+      "\n  " +
+        _vm._s(_vm.categories) +
+        "\n  " +
+        _vm._s(_vm.getCategory()) +
+        "\n"
+    )
   ])
 }
 var staticRenderFns = []
@@ -49387,19 +49390,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     sidebar: __WEBPACK_IMPORTED_MODULE_0__sidebar___default.a,
     "full-article": __WEBPACK_IMPORTED_MODULE_1__full_article___default.a,
     "short-article": __WEBPACK_IMPORTED_MODULE_2__short_article___default.a
-  },
-  watch: {
-    $route: function $route(to, from) {
-      var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
-      this.$store.dispatch("getArticles", path);
-    }
-  },
-
-  methods: {},
-  created: function created() {
-    var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
-    this.$store.dispatch("getArticles", path);
   }
+
 });
 
 /***/ }),
@@ -49668,7 +49660,8 @@ if (false) {
     article: {},
     latest_post: {},
     like_articles: {},
-    subcategories: {}
+    subcategories: {},
+    categories: {}
   },
   getters: {},
   mutations: {
@@ -49686,6 +49679,9 @@ if (false) {
     },
     setArticle: function setArticle(state, data) {
       this.state.article = data;
+    },
+    setCategories: function setCategories(state, data) {
+      this.state.categories = data;
     }
   },
   actions: {
@@ -49695,11 +49691,32 @@ if (false) {
         var like_articles = res.data.like_articles;
         var latest_post = res.data.latest_post;
         var subcategories = res.data.subcategories;
+        var categories = res.data.categories;
+
+        console.log(res);
 
         context.commit("setArticles", articles);
         context.commit("setSubcategories", subcategories);
         context.commit("setLikeArticles", like_articles);
         context.commit("setLatestPost", latest_post);
+        context.commit("setCategories", categories);
+      });
+    },
+    getArticle: function getArticle(context, path) {
+      axios.post(path).then(function (res) {
+        var article = res.data.article[0];
+        var like_articles = res.data.like_articles;
+        var latest_post = res.data.latest_post;
+        var subcategories = res.data.subcategories;
+        var categories = res.data.categories;
+
+        console.log(res);
+
+        context.commit("setArticle", article);
+        context.commit("setSubcategories", subcategories);
+        context.commit("setLikeArticles", like_articles);
+        context.commit("setLatestPost", latest_post);
+        context.commit("setCategories", categories);
       });
     }
   }

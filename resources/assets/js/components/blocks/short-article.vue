@@ -12,6 +12,8 @@
         Продовжити читання
         <span class="fa fa-arrow-right"></span>
       </router-link>
+
+      {{categories}}
     </article>
   </section>
 </template>
@@ -25,11 +27,24 @@ export default {
   components: {},
   methods: {
     getPathToArticle: function(id) {
-      let category = this.$route.params.category ? this.$route.params.category : "items";
-      let path = `/${category}/article/${id}`;
+      let path = `/article/${id}`;
       return path;
     }
   },
-  computed: mapState(["articles"])
+  computed: mapState(["articles", "categories"]),
+  watch: {
+    $route(to, from) {
+      let path = this.$route.params.category
+        ? `/${this.$route.params.category}`
+        : "/";
+      this.$store.dispatch("getArticles", path);
+    }
+  },
+  created: function() {
+    let path = this.$route.params.category
+      ? `/${this.$route.params.category}`
+      : "/";
+    this.$store.dispatch("getArticles", path);
+  }
 };
 </script>
