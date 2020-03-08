@@ -1,12 +1,10 @@
 <template>
   <article>
     <h3 class="title">{{ article.title_article }}</h3>
-    <span class="article_category"></span>
+    <span class="article_category">{{getCategory(article.category_id, categories)}}</span>
     <span class="article_date">{{article.created_at}}</span>
     <!-- <img src="./image/content/article-img.jpg" alt="logo-article" class="article_logo" /> -->
     <span class="article_text">{{article.content_article}}</span>
-    {{categories}}
-    {{getCategory()}}
   </article>
 </template>
 
@@ -24,10 +22,12 @@ export default {
     }
   },
   methods: {
-    getCategory: function() {
-      this.categories.find(elem => {
-        return elem.id === this.article.id;
+    getCategory: function(id, data) {
+      let res = data.find(elem => {
+        return elem.id === id;
       });
+
+      return res.name;
     }
   },
   created: function() {

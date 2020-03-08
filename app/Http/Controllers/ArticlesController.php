@@ -17,20 +17,26 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
 
-        $category_name = $request->category ? $request->category : "items";
-        $category_id = InfoArticle::getCategoryId($category_name);
-
-        $articles = Article::where('category_id', $category_id)->paginate(10);
-        $articles = $articles ? $articles : [];
+        if ($request->route()->named("category")) {
+            $category_name = $request->category ? $request->category : "items";
+            $category_id = InfoArticle::getCategoryId($category_name);
+            $articles = Article::where('category_id', $category_id)->paginate(10);
+        } elseif ($request->route()->named("subcategory")) {
+            $subcategory_id = $request->id ? $request->id : 1;
+            $articles = Article::where('subcategory_id', $subcategory_id)->get()->toArray();
+        }
         $like_articles = InfoArticle::getLikeArticle();
         $categories = InfoArticle::getCategories();
+        $subcategories = InfoArticle::getSubcategories();
+        $latest_post = InfoArticle::getLatestArticle(4);
 
         $response_list = [
             'articles' => $articles,
-            "subcategories" => InfoArticle::getSubcategories(),
-            "latest_post" => InfoArticle::getLatestArticle(4),
+            "subcategories" => $subcategories,
+            "latest_post" => $latest_post,
             "like_articles" => $like_articles,
-            "categories" => $categories
+            "categories" => $categories,
+            "route" => $request->route()->getName(),
         ];
 
         return \json_encode($response_list);
@@ -71,14 +77,13 @@ class ArticlesController extends Controller
         $article = Article::where("id", $request->id)->get()->toArray();
         $article = $article ? $article : [];
         $categories = InfoArticle::getCategories();
-        
 
         $response_list = [
             'article' => $article,
             "subcategories" => InfoArticle::getSubcategories(),
             "latest_post" => InfoArticle::getLatestArticle(4),
             "like_articles" => $like_articles,
-            "categories" => $categories
+            "categories" => $categories,
         ];
         return \json_encode($response_list);
 

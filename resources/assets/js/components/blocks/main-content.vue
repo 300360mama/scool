@@ -4,6 +4,8 @@
       <router-view name="articlesWithPages"></router-view>
       <router-view name="fullArticle"></router-view>
       <router-view></router-view>
+
+      {{$route}}
     </main>
     <sidebar></sidebar>
   </div>
@@ -22,7 +24,6 @@ export default {
     sidebar,
     "full-article": fullArticle,
     "short-article": shortArticle
-  },
- 
+  }
 };
 </script>

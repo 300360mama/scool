@@ -48720,11 +48720,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     path: "/article/:id",
     component: __WEBPACK_IMPORTED_MODULE_2__components_blocks_full_article___default.a
   }, {
-    name: "articlesWithPages",
-    path: "/:category/page/:page",
+    path: "/:category?",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }, {
-    path: "/:category?",
+    name: "articlesWithPages",
+    path: "/items/:subcategory/:id",
+    component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
+  }, {
+    name: "articlesWithPages",
+    path: "/:category/page/:page",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }],
   mode: "history"
@@ -48755,8 +48759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48768,17 +48771,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getPathToArticle: function getPathToArticle(id) {
       var path = "/article/" + id;
       return path;
+    },
+    getCategory: function getCategory(id, data) {
+      var res = data.find(function (elem) {
+        return elem.id === id;
+      });
+      return res.name;
     }
   },
   computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["articles", "categories"]),
   watch: {
     $route: function $route(to, from) {
-      var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
+
+      var path = "/";
+      console.log(this.$route);
+      if (this.$route.params.category) {
+        path = "/" + this.$route.params.category;
+      } else if (this.$route.params.subcategory && this.$route.params.id) {
+        path = "/items/" + this.$route.params.subcategory + "/" + this.$route.params.id;
+      }
+
+      console.log(path);
       this.$store.dispatch("getArticles", path);
     }
   },
   created: function created() {
     var path = this.$route.params.category ? "/" + this.$route.params.category : "/";
+    console.log(path);
     this.$store.dispatch("getArticles", path);
   }
 });
@@ -48802,9 +48821,13 @@ var render = function() {
             _vm._v(_vm._s(article.title_article))
           ]),
           _vm._v(" "),
-          _c("span", { staticClass: "article_category" }),
+          _c("span", { staticClass: "article_category" }, [
+            _vm._v(_vm._s(_vm.getCategory(article.category_id, _vm.categories)))
+          ]),
           _vm._v(" "),
-          _c("span", { staticClass: "article_date" }),
+          _c("span", { staticClass: "article_date" }, [
+            _vm._v(_vm._s(article.created_at))
+          ]),
           _vm._v(" "),
           _c("img", {
             staticClass: "article_logo",
@@ -48828,8 +48851,7 @@ var render = function() {
               _vm._v("\n      Продовжити читання\n      "),
               _c("span", { staticClass: "fa fa-arrow-right" })
             ]
-          ),
-          _vm._v("\n\n    " + _vm._s(_vm.categories) + "\n  ")
+          )
         ],
         1
       )
@@ -48864,8 +48886,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48880,12 +48900,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
-    getCategory: function getCategory() {
-      var _this = this;
-
-      this.categories.find(function (elem) {
-        return elem.id === _this.article.id;
+    getCategory: function getCategory(id, data) {
+      var res = data.find(function (elem) {
+        return elem.id === id;
       });
+
+      return res.name;
     }
   },
   created: function created() {
@@ -48908,7 +48928,9 @@ var render = function() {
       _vm._v(_vm._s(_vm.article.title_article))
     ]),
     _vm._v(" "),
-    _c("span", { staticClass: "article_category" }),
+    _c("span", { staticClass: "article_category" }, [
+      _vm._v(_vm._s(_vm.getCategory(_vm.article.category_id, _vm.categories)))
+    ]),
     _vm._v(" "),
     _c("span", { staticClass: "article_date" }, [
       _vm._v(_vm._s(_vm.article.created_at))
@@ -48916,14 +48938,7 @@ var render = function() {
     _vm._v(" "),
     _c("span", { staticClass: "article_text" }, [
       _vm._v(_vm._s(_vm.article.content_article))
-    ]),
-    _vm._v(
-      "\n  " +
-        _vm._s(_vm.categories) +
-        "\n  " +
-        _vm._s(_vm.getCategory()) +
-        "\n"
-    )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -49376,6 +49391,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -49391,7 +49408,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     "full-article": __WEBPACK_IMPORTED_MODULE_1__full_article___default.a,
     "short-article": __WEBPACK_IMPORTED_MODULE_2__short_article___default.a
   }
-
 });
 
 /***/ }),
@@ -49479,19 +49495,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      open_category: false
+    };
   },
-  created: function created() {
-    console.log(this.subcategories);
-    console.log(this.latest_post);
-  },
+  created: function created() {},
   methods: {
-    getPathToArticle: function getPathToArticle(id) {
+    getPathToSubcategories: function getPathToSubcategories(id) {
       return "/items/subcategory/" + id;
+    },
+    getPathToArticle: function getPathToArticle(id) {
+      return "/article/" + id;
+    },
+    toggleClass: function toggleClass() {
+      this.open_category = !this.open_category;
     }
   },
   computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["subcategories", "latest_post"])
@@ -49513,14 +49543,18 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "categories_list", attrs: { id: "categoriesList" } },
+        {
+          staticClass: "categories_list",
+          class: { open_category: _vm.open_category },
+          attrs: { id: "categoriesList" }
+        },
         _vm._l(_vm.subcategories, function(subcategory, id) {
           return _c(
             "router-link",
             {
               key: id,
               staticClass: "category",
-              attrs: { to: _vm.getPathToArticle(subcategory.id) }
+              attrs: { to: _vm.getPathToSubcategories(subcategory.id) }
             },
             [_vm._v(_vm._s(subcategory.name))]
           )
@@ -49529,8 +49563,13 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("i", {
-        staticClass: "open_block fa-angle-double-down fa",
-        attrs: { id: "openArrow" }
+        staticClass: "open_block fa",
+        class: {
+          "fa-angle-double-down": !_vm.open_category,
+          "fa-angle-double-up": _vm.open_category
+        },
+        attrs: { id: "openArrow" },
+        on: { click: _vm.toggleClass }
       })
     ]),
     _vm._v(" "),
@@ -49543,7 +49582,11 @@ var render = function() {
         _vm._l(_vm.latest_post, function(post, id) {
           return _c(
             "router-link",
-            { key: id, staticClass: "latest_post_block", attrs: { to: "/" } },
+            {
+              key: id,
+              staticClass: "latest_post_block",
+              attrs: { to: _vm.getPathToArticle(post.id) }
+            },
             [
               _c("img", {
                 staticClass: "post_id_logo",
@@ -49596,7 +49639,8 @@ var render = function() {
           _vm._v(" "),
           _c("router-view", { attrs: { name: "fullArticle" } }),
           _vm._v(" "),
-          _c("router-view")
+          _c("router-view"),
+          _vm._v("\n\n    " + _vm._s(_vm.$route) + "\n  ")
         ],
         1
       ),
