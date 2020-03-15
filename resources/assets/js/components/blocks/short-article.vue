@@ -44,8 +44,8 @@ export default {
       console.log(this.$route);
       if (this.$route.params.category) {
         path = `/${this.$route.params.category}`;
-      } else if (this.$route.params.subcategory && this.$route.params.id) {
-        path = `/items/${this.$route.params.subcategory}/${this.$route.params.id}`;
+      } else if (this.$route.name === "subcategory") {
+        path = `/items/subcategory/${this.$route.params.id}`;
       }
 
       console.log(path);

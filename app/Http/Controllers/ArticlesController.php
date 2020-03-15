@@ -23,7 +23,7 @@ class ArticlesController extends Controller
             $articles = Article::where('category_id', $category_id)->paginate(10);
         } elseif ($request->route()->named("subcategory")) {
             $subcategory_id = $request->id ? $request->id : 1;
-            $articles = Article::where('subcategory_id', $subcategory_id)->get()->toArray();
+            $articles = Article::where('subcategory_id', $subcategory_id)->paginate(10);
         }
         $like_articles = InfoArticle::getLikeArticle();
         $categories = InfoArticle::getCategories();

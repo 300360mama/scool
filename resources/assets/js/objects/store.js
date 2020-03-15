@@ -40,6 +40,7 @@ export default {
         let categories = res.data.categories;
 
         console.log(res);
+        console.log(articles);
 
         context.commit("setArticles", articles);
         context.commit("setSubcategories", subcategories);
@@ -56,7 +57,6 @@ export default {
         let subcategories = res.data.subcategories;
         let categories = res.data.categories;
 
-
         console.log(res);
 
         context.commit("setArticle", article);
@@ -64,7 +64,6 @@ export default {
         context.commit("setLikeArticles", like_articles);
         context.commit("setLatestPost", latest_post);
         context.commit("setCategories", categories);
-
       });
     }
   }

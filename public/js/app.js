@@ -48720,11 +48720,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     path: "/article/:id",
     component: __WEBPACK_IMPORTED_MODULE_2__components_blocks_full_article___default.a
   }, {
+    name: "articlesWithPages",
     path: "/:category?",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }, {
-    name: "articlesWithPages",
-    path: "/items/:subcategory/:id",
+    name: "subcategory",
+    path: "/items/subcategory/:id",
     component: __WEBPACK_IMPORTED_MODULE_1__components_blocks_short_article___default.a
   }, {
     name: "articlesWithPages",
@@ -48787,8 +48788,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       console.log(this.$route);
       if (this.$route.params.category) {
         path = "/" + this.$route.params.category;
-      } else if (this.$route.params.subcategory && this.$route.params.id) {
-        path = "/items/" + this.$route.params.subcategory + "/" + this.$route.params.id;
+      } else if (this.$route.name === "subcategory") {
+        path = "/items/subcategory/" + this.$route.params.id;
       }
 
       console.log(path);
@@ -49391,8 +49392,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -49407,6 +49406,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     sidebar: __WEBPACK_IMPORTED_MODULE_0__sidebar___default.a,
     "full-article": __WEBPACK_IMPORTED_MODULE_1__full_article___default.a,
     "short-article": __WEBPACK_IMPORTED_MODULE_2__short_article___default.a
+  },
+  created: function created() {
+    console.log(this.$route);
   }
 });
 
@@ -49639,8 +49641,7 @@ var render = function() {
           _vm._v(" "),
           _c("router-view", { attrs: { name: "fullArticle" } }),
           _vm._v(" "),
-          _c("router-view"),
-          _vm._v("\n\n    " + _vm._s(_vm.$route) + "\n  ")
+          _c("router-view")
         ],
         1
       ),
@@ -49738,6 +49739,7 @@ if (false) {
         var categories = res.data.categories;
 
         console.log(res);
+        console.log(articles);
 
         context.commit("setArticles", articles);
         context.commit("setSubcategories", subcategories);
