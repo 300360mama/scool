@@ -10,7 +10,7 @@
 import navigation from "./blocks/navigation";
 import mainFooter from "./blocks/main-footer";
 import mainContent from "./blocks/main-content";
-//import crud from "./crud/crud";
+import crud from "./crud/crud";
 
 export default {
   data() {
@@ -20,7 +20,7 @@ export default {
     navigation,
     "main-footer": mainFooter,
     "main-content": mainContent,
-    //crud: crud
+    crud: crud
   },
   mounted() {}
 };
