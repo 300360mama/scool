@@ -228,8 +228,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'InfoDB' => App\Helpers\Facades\DBFacade::class,
         'InfoArticle' => App\Helpers\Facades\ArticleFacade::class,
-        'ModelFacade' => App\Helpers\Facades\ModelFactoryFacade::class,
-
     ],
 
 ];

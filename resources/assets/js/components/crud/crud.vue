@@ -1,6 +1,6 @@
 <template>
   <div class="crud-content">
-    
+    <router-view name="crudAll"></router-view>
   </div>
 </template>
 
@@ -16,6 +16,5 @@ export default {
   },
   methods: {},
   created: function() {},
-  computed: mapState(["article", "categories"])
 };
 </script>

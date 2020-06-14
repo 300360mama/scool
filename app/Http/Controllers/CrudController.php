@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\InfoDB;
 use Illuminate\Http\Request;
-use App\Helpers\ModelFactory;
 
 class CrudController extends Controller
 {
@@ -16,8 +16,9 @@ class CrudController extends Controller
     public function index(Request $request)
     {
 
-        $response_list = [123];
-        return \json_encode($response_list);
+        $models = InfoDB::getTAbleList();
+
+        return \json_encode($models);
 
     }
 

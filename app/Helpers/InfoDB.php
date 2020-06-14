@@ -51,17 +51,17 @@ class InfoDB extends DB
     }
 
     /**
-     * getTableModel
+     * getModel
      *
      * @param string $table
      *
      * @return class
      */
-    public static function getTableModel($table)
+    public static function getModel($table)
     {
 
         $table = ucfirst(strtolower($table));
-        $model = "";
+        $model = null;
 
         switch ($table) {
             case "Author":
@@ -97,13 +97,26 @@ class InfoDB extends DB
 
         foreach ($listRelationships as $value) {
             $relationshipsTable = substr($value, 0, -3);
-            $relationshipsTableModel = InfoDB::getTableModel($relationshipsTable);
+            $relationshipsTableModel = InfoDB::getModel($relationshipsTable);
             $columnName = InfoDB::getRelationshipsColumnName($relationshipsTable);
             $res = $relationshipsTableModel->get(["id", $columnName])->toArray();
             $relationships[$value] = $res;
         }
 
         return $relationships;
+    }
+
+    public static function getTableList()
+    {
+        $tables = [
+            "articles",
+            "authors",
+            "categories",
+            "images",
+            "subcategories",
+        ];
+
+        return $tables;
     }
 
 }

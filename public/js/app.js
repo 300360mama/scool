@@ -48738,6 +48738,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     name: "crudShow",
     path: "/crud/show/:table/:page?",
     component: __WEBPACK_IMPORTED_MODULE_3__components_crud_crud_show___default.a
+  }, {
+    name: "crudAll",
+    path: "/crud/all",
+    component: crudAll
   }],
   mode: "history"
 }));
@@ -49858,8 +49862,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     $route: function $route(to, from) {}
   },
   methods: {},
-  created: function created() {},
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(["article", "categories"])
+  created: function created() {}
 });
 
 /***/ }),
@@ -49870,7 +49873,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "crud-content" })
+  return _c(
+    "div",
+    { staticClass: "crud-content" },
+    [_c("router-view", { attrs: { name: "crudAll" } })],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49927,7 +49935,8 @@ if (false) {
     latest_post: {},
     like_articles: {},
     subcategories: {},
-    categories: {}
+    categories: {},
+    tables: {}
   },
   getters: {},
   mutations: {
@@ -49948,6 +49957,9 @@ if (false) {
     },
     setCategories: function setCategories(state, data) {
       this.state.categories = data;
+    },
+    setTables: function setTables(state, data) {
+      this.state.tables = data;
     }
   },
   actions: {
@@ -49984,6 +49996,14 @@ if (false) {
         context.commit("setLikeArticles", like_articles);
         context.commit("setLatestPost", latest_post);
         context.commit("setCategories", categories);
+      });
+    },
+    getTable: function getTable(context, path) {
+      axios.post(path).then(function (res) {
+
+        console.log(res);
+        var tables = res.data.tables;
+        context.commit("setTables", article);
       });
     }
   }

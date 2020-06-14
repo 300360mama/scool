@@ -29,6 +29,11 @@ export default new VueRouter({
       name: "crudShow",
       path: "/crud/show/:table/:page?",
       component: crudShow
+    },
+    {
+      name: "crudAll",
+      path: "/crud/all",
+      component: crudAll
     }
   ],
   mode: "history"

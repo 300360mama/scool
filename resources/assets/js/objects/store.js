@@ -7,7 +7,8 @@ export default {
     latest_post: {},
     like_articles: {},
     subcategories: {},
-    categories: {}
+    categories: {},
+    tables: {}
   },
   getters: {},
   mutations: {
@@ -28,6 +29,9 @@ export default {
     },
     setCategories(state, data) {
       this.state.categories = data;
+    },
+    setTables(state, data) {
+      this.state.tables = data;
     }
   },
   actions: {
@@ -64,6 +68,14 @@ export default {
         context.commit("setLikeArticles", like_articles);
         context.commit("setLatestPost", latest_post);
         context.commit("setCategories", categories);
+      });
+    },
+    getTable(context, path) {
+      axios.post(path).then(res => {
+      
+        console.log(res);
+        let tables = res.data.tables;
+        context.commit("setTables", article);
       });
     }
   }
